@@ -1,0 +1,65 @@
+{
+  "id": "youtube",
+  "name": "YouTube",
+  "version": "1.0.0",
+  "author": "TotallyCool0",
+  "description": "Identity-first tweaks for YouTube: replace the logo with custom text, an uploaded image, or a retro preset; recolor the player accent; and trigger easter-egg visual modes (rainbow progress bar, CRT scanlines, vaporwave). Deliberately avoids overlapping with SponsorBlock, Enhancer for YouTube, and Unhook.",
+  "icon": "youtube",
+  "emoji": "▶️",
+  "accent": "#ff0033",
+  "matches": ["*://www.youtube.com/*"],
+  "builtIn": false,
+  "settings": [
+    { "id": "logoMode", "label": "Logo mode", "type": "select",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "text", "label": "Custom text" },
+        { "value": "image", "label": "Custom image" },
+        { "value": "preset", "label": "Retro preset" },
+        { "value": "hidden", "label": "Hidden" },
+        { "value": "random", "label": "Random (each load)" }
+      ],
+      "default": "default", "section": "Logo", "quick": true },
+
+    { "id": "logoText", "label": "Logo text", "type": "text", "default": "Prism", "placeholder": "Your brand", "section": "Logo" },
+    { "id": "logoFont", "label": "Text font", "type": "select",
+      "options": [
+        { "value": "rounded", "label": "Rounded (YouTube-like)" },
+        { "value": "bold", "label": "Bold sans" },
+        { "value": "mono", "label": "Monospace" },
+        { "value": "serif", "label": "Serif" },
+        { "value": "caps", "label": "Caps condensed" }
+      ],
+      "default": "rounded", "section": "Logo" },
+    { "id": "logoColor", "label": "Text color", "type": "color", "default": "#ffffff", "section": "Logo" },
+    { "id": "logoGlow", "label": "Neon glow", "type": "toggle", "default": false, "section": "Logo" },
+
+    { "id": "logoImage", "label": "Image URL or data URL", "type": "text", "default": "", "placeholder": "https://... or data:image/...", "section": "Logo" },
+    { "id": "logoScale", "label": "Logo scale", "type": "slider", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "section": "Logo" },
+
+    { "id": "logoPreset", "label": "Retro preset", "type": "select",
+      "options": [
+        { "value": "classic2005", "label": "Classic 2005 (Broadcast Yourself)" },
+        { "value": "wordmark2011", "label": "2011 Wordmark" },
+        { "value": "neon", "label": "Neon" },
+        { "value": "vaporwave", "label": "Vaporwave" },
+        { "value": "terminal", "label": "Terminal green" },
+        { "value": "gold", "label": "Prism gold" }
+      ],
+      "default": "classic2005", "section": "Logo" },
+
+    { "id": "hideCountryCode", "label": "Hide country code", "type": "toggle", "default": false, "section": "Logo" },
+    { "id": "yoodleOverride", "label": "Override special-event logos (yoodles)", "type": "toggle", "default": true, "section": "Logo" },
+
+    { "id": "accentColor", "label": "Player accent color", "type": "color", "default": "#ff0033", "section": "Player" },
+    { "id": "rainbowProgress", "label": "Rainbow progress bar", "type": "toggle", "default": false, "section": "Player", "quick": true },
+    { "id": "thickProgress", "label": "Thicker progress bar", "type": "toggle", "default": false, "section": "Player" },
+
+    { "id": "crtMode", "label": "CRT scanline mode", "type": "toggle", "default": false, "section": "Easter eggs", "quick": true },
+    { "id": "vaporwaveMode", "label": "Vaporwave filter", "type": "toggle", "default": false, "section": "Easter eggs" },
+    { "id": "konami", "label": "Konami code easter egg (↑↑↓↓←→←→BA)", "type": "toggle", "default": true, "section": "Easter eggs" }
+  ],
+  "styles": {
+    "css": "/* Prism YouTube module */\n\n/* ===== Logo: hide defaults when our logo is active ===== */\nhtml.prism-logoMode-text ytd-topbar-logo-renderer #logo-icon,\nhtml.prism-logoMode-image ytd-topbar-logo-renderer #logo-icon,\nhtml.prism-logoMode-preset ytd-topbar-logo-renderer #logo-icon,\nhtml.prism-logoMode-hidden ytd-topbar-logo-renderer #logo-icon,\nhtml.prism-logoMode-random ytd-topbar-logo-renderer #logo-icon { display: none !important; }\n\nhtml.prism-on-yoodleOverride.prism-logoMode-text ytd-yoodle-renderer,\nhtml.prism-on-yoodleOverride.prism-logoMode-image ytd-yoodle-renderer,\nhtml.prism-on-yoodleOverride.prism-logoMode-preset ytd-yoodle-renderer,\nhtml.prism-on-yoodleOverride.prism-logoMode-hidden ytd-yoodle-renderer,\nhtml.prism-on-yoodleOverride.prism-logoMode-random ytd-yoodle-renderer { display: none !important; }\n\nhtml.prism-logoMode-hidden ytd-topbar-logo-renderer #logo { visibility: hidden !important; }\nhtml.prism-on-hideCountryCode ytd-topbar-logo-renderer #country-code { display: none !important; }\n\n/* The injected logo container */\n.prism-yt-logo {\n  display: inline-flex;\n  align-items: center;\n  gap: 0;\n  height: 20px;\n  text-decoration: none;\n  transform: scale(calc(var(--prism-logoScale, 100) / 100));\n  transform-origin: left center;\n  user-select: none;\n  font-family: 'YouTube Sans', 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;\n}\n.prism-yt-logo .prism-yt-text { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; color: var(--prism-logoColor, #fff); }\n.prism-yt-logo .prism-yt-play { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 20px; background: #ff0033; border-radius: 4px; margin-right: 4px; color: #fff; font-size: 13px; font-weight: 900; padding-bottom: 1px; }\nhtml.prism-logoFont-bold .prism-yt-text { font-family: Arial, Helvetica, sans-serif; font-weight: 900; letter-spacing: 0; }\nhtml.prism-logoFont-mono .prism-yt-text { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-weight: 700; letter-spacing: 0; }\nhtml.prism-logoFont-serif .prism-yt-text { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; }\nhtml.prism-logoFont-caps .prism-yt-text { font-family: 'Arial Narrow', Impact, sans-serif; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; font-size: 16px; }\nhtml.prism-on-logoGlow .prism-yt-text { text-shadow: 0 0 6px currentColor, 0 0 14px currentColor; }\n\n/* Retro presets */\n.prism-yt-preset-classic2005 .prism-yt-text { font-family: 'Arial Narrow', Impact, sans-serif; font-weight: 900; font-size: 17px; color: #fff; letter-spacing: 0.5px; }\n.prism-yt-preset-classic2005 .prism-yt-play { background: #cc181e; border-radius: 6px; width: 32px; height: 22px; }\n.prism-yt-preset-wordmark2011 .prism-yt-text { font-family: 'YouTube Sans', Arial, sans-serif; font-weight: 500; font-size: 19px; letter-spacing: -1px; }\n.prism-yt-preset-neon .prism-yt-text { color: #0ff; text-shadow: 0 0 4px #0ff, 0 0 10px #0ff, 0 0 18px #f0f; font-family: 'JetBrains Mono', monospace; font-weight: 700; }\n.prism-yt-preset-neon .prism-yt-play { background: transparent; box-shadow: 0 0 8px #f0f, 0 0 16px #f0f; border: 1px solid #f0f; color: #f0f; }\n.prism-yt-preset-vaporwave .prism-yt-text { color: #ff71ce; text-shadow: 2px 2px 0 #01cdfe, -2px -2px 0 #b967ff; font-family: 'Arial Narrow', sans-serif; font-weight: 900; font-style: italic; }\n.prism-yt-preset-vaporwave .prism-yt-play { background: linear-gradient(135deg, #ff71ce, #01cdfe); }\n.prism-yt-preset-terminal .prism-yt-text { color: #00ff41; font-family: 'JetBrains Mono', monospace; text-shadow: 0 0 6px #00ff41; }\n.prism-yt-preset-terminal .prism-yt-play { background: #00ff41; color: #000; }\n.prism-yt-preset-gold .prism-yt-text { color: #e7b458; }\n.prism-yt-preset-gold .prism-yt-play { background: linear-gradient(135deg, #e7b458, #b3822f); color: #1a1208; }\n\n/* ===== Player accent ===== */\nhtml.prism-mod-youtube .ytp-play-progress { background-color: var(--prism-accentColor, #ff0033) !important; }\nhtml.prism-mod-youtube .ytp-swatch-background-color { background-color: var(--prism-accentColor, #ff0033) !important; }\nhtml.prism-mod-youtube .ytp-slider-handle { background-color: var(--prism-accentColor, #ff0033) !important; }\n\n/* ===== Rainbow progress bar ===== */\nhtml.prism-on-rainbowProgress .ytp-play-progress {\n  background: linear-gradient(90deg, #ff0040, #ff8c00, #ffd700, #00e676, #00b0ff, #7c4dff, #e040fb) !important;\n  background-size: 200% 100% !important;\n  animation: prism-rainbow-progress 3s linear infinite !important;\n}\n@keyframes prism-rainbow-progress { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }\n\n/* ===== Thicker progress bar ===== */\nhtml.prism-on-thickProgress .ytp-progress-bar { height: 8px !important; }\nhtml.prism-on-thickProgress .ytp-progress-bar:hover { height: 12px !important; }\n\n/* ===== CRT scanline mode ===== */\nhtml.prism-on-crtMode #movie_player { filter: contrast(1.12) saturate(0.85) brightness(0.95); }\nhtml.prism-on-crtMode #movie_player::after {\n  content: '';\n  position: absolute;\n  inset: 0;\n  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px);\n  pointer-events: none;\n  z-index: 9999;\n  mix-blend-mode: multiply;\n}\nhtml.prism-on-crtMode #movie_player::before {\n  content: '';\n  position: absolute;\n  inset: 0;\n  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.5) 100%);\n  pointer-events: none;\n  z-index: 9998;\n}\n\n/* ===== Vaporwave filter ===== */\nhtml.prism-on-vaporwaveMode #movie_player { filter: hue-rotate(290deg) saturate(1.6) contrast(1.15); }\nhtml.prism-on-vaporwaveMode #movie_player::after {\n  content: '';\n  position: absolute;\n  inset: 0;\n  background: linear-gradient(180deg, transparent, rgba(255, 113, 206, 0.16), rgba(1, 205, 254, 0.12));\n  pointer-events: none;\n  z-index: 9999;\n}\n\n/* ===== Konami / party mode ===== */\nhtml.prism-party body { animation: prism-party-hue 4s linear infinite; }\n@keyframes prism-party-hue { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }\n\n/* ===== Prism toast ===== */\n#prism-toast {\n  position: fixed;\n  bottom: 24px;\n  left: 50%;\n  transform: translateX(-50%) translateY(20px);\n  background: rgba(20, 20, 26, 0.96);\n  color: #f4f2ee;\n  padding: 12px 18px;\n  border-radius: 12px;\n  font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  letter-spacing: 0.2px;\n  border: 1px solid rgba(231, 180, 88, 0.4);\n  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);\n  z-index: 999999;\n  opacity: 0;\n  transition: opacity 0.25s, transform 0.25s;\n  pointer-events: none;\n}\n#prism-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }\n#prism-toast .prism-toast-accent { color: #e7b458; font-weight: 700; }\n"
+  }
+}

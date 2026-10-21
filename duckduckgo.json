@@ -1,0 +1,5206 @@
+{
+  "id": "duckduckgo",
+  "name": "DuckDuckGo",
+  "version": "1.0.0",
+  "author": "TotallyCool0",
+  "description": "Deep customization for DuckDuckGo: native theme sync via the ad cookie, custom colors and typography, layout tweaks, and one-tap access to DuckDuckGo's hidden logo easter eggs (804 verified triggers including Frieren, Halloween, Pride, and many more).",
+  "icon": "duck",
+  "emoji": "🦆",
+  "accent": "#de5833",
+  "matches": [
+    "*://duckduckgo.com/*",
+    "*://*.duckduckgo.com/*"
+  ],
+  "builtIn": false,
+  "settings": [
+    {
+      "id": "themeMode",
+      "label": "Theme",
+      "type": "select",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "dark",
+          "label": "Dark"
+        },
+        {
+          "value": "terminal",
+          "label": "Terminal"
+        },
+        {
+          "value": "sepia",
+          "label": "Sepia (CSS)"
+        },
+        {
+          "value": "nord",
+          "label": "Nord (CSS)"
+        }
+      ],
+      "default": "default",
+      "section": "Appearance",
+      "quick": true
+    },
+    {
+      "id": "customColors",
+      "label": "Custom colors",
+      "type": "toggle",
+      "default": false,
+      "section": "Appearance"
+    },
+    {
+      "id": "bgColor",
+      "label": "Background",
+      "type": "color",
+      "default": "#1c1c1e",
+      "section": "Appearance",
+      "depends": "customColors"
+    },
+    {
+      "id": "textColor",
+      "label": "Text",
+      "type": "color",
+      "default": "#e8e8e8",
+      "section": "Appearance",
+      "depends": "customColors"
+    },
+    {
+      "id": "linkColor",
+      "label": "Links",
+      "type": "color",
+      "default": "#7ab4ff",
+      "section": "Appearance",
+      "depends": "customColors"
+    },
+    {
+      "id": "visitedColor",
+      "label": "Visited links",
+      "type": "color",
+      "default": "#b48aff",
+      "section": "Appearance",
+      "depends": "customColors"
+    },
+    {
+      "id": "urlColor",
+      "label": "URL / snippet",
+      "type": "color",
+      "default": "#9aa0a6",
+      "section": "Appearance",
+      "depends": "customColors"
+    },
+    {
+      "id": "headerColor",
+      "label": "Header background",
+      "type": "color",
+      "default": "#2a2a2e",
+      "section": "Appearance",
+      "depends": "customColors"
+    },
+    {
+      "id": "fontFamily",
+      "label": "Font family",
+      "type": "select",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "arial",
+          "label": "Arial"
+        },
+        {
+          "value": "georgia",
+          "label": "Georgia"
+        },
+        {
+          "value": "verdana",
+          "label": "Verdana"
+        },
+        {
+          "value": "tahoma",
+          "label": "Tahoma"
+        },
+        {
+          "value": "courier",
+          "label": "Courier"
+        },
+        {
+          "value": "system",
+          "label": "System UI"
+        }
+      ],
+      "default": "default",
+      "section": "Typography"
+    },
+    {
+      "id": "fontSize",
+      "label": "Font size",
+      "type": "select",
+      "options": [
+        {
+          "value": "s",
+          "label": "Small"
+        },
+        {
+          "value": "m",
+          "label": "Medium"
+        },
+        {
+          "value": "l",
+          "label": "Large"
+        },
+        {
+          "value": "xl",
+          "label": "Extra large"
+        }
+      ],
+      "default": "m",
+      "section": "Typography"
+    },
+    {
+      "id": "customFontScale",
+      "label": "Result text scale",
+      "type": "slider",
+      "min": 80,
+      "max": 140,
+      "step": 5,
+      "unit": "%",
+      "default": 100,
+      "section": "Typography"
+    },
+    {
+      "id": "safeSearch",
+      "label": "Safe search",
+      "type": "select",
+      "options": [
+        {
+          "value": "-2",
+          "label": "Strict"
+        },
+        {
+          "value": "-1",
+          "label": "Moderate"
+        },
+        {
+          "value": "1",
+          "label": "Off"
+        }
+      ],
+      "default": "-1",
+      "section": "Behavior"
+    },
+    {
+      "id": "region",
+      "label": "Region",
+      "type": "select",
+      "options": [
+        {
+          "value": "wt-wt",
+          "label": "No region"
+        },
+        {
+          "value": "us-en",
+          "label": "United States"
+        },
+        {
+          "value": "uk-en",
+          "label": "United Kingdom"
+        },
+        {
+          "value": "ca-en",
+          "label": "Canada"
+        },
+        {
+          "value": "au-en",
+          "label": "Australia"
+        },
+        {
+          "value": "de-de",
+          "label": "Germany"
+        },
+        {
+          "value": "fr-fr",
+          "label": "France"
+        },
+        {
+          "value": "es-es",
+          "label": "Spain"
+        },
+        {
+          "value": "it-it",
+          "label": "Italy"
+        },
+        {
+          "value": "jp-jp",
+          "label": "Japan"
+        },
+        {
+          "value": "cn-zh",
+          "label": "China"
+        },
+        {
+          "value": "kr-kr",
+          "label": "Korea"
+        },
+        {
+          "value": "br-pt",
+          "label": "Brazil"
+        },
+        {
+          "value": "in-en",
+          "label": "India"
+        }
+      ],
+      "default": "wt-wt",
+      "section": "Behavior"
+    },
+    {
+      "id": "openInNewTab",
+      "label": "Open results in new tab",
+      "type": "toggle",
+      "default": false,
+      "section": "Behavior",
+      "quick": true
+    },
+    {
+      "id": "autocomplete",
+      "label": "Autocomplete",
+      "type": "toggle",
+      "default": true,
+      "section": "Behavior"
+    },
+    {
+      "id": "keyboardShortcuts",
+      "label": "Keyboard shortcuts",
+      "type": "toggle",
+      "default": false,
+      "section": "Behavior"
+    },
+    {
+      "id": "compactResults",
+      "label": "Compact results",
+      "type": "toggle",
+      "default": false,
+      "section": "Layout",
+      "quick": true
+    },
+    {
+      "id": "hideAds",
+      "label": "Hide ad results",
+      "type": "toggle",
+      "default": false,
+      "section": "Layout"
+    },
+    {
+      "id": "centerLogo",
+      "label": "Center homepage logo",
+      "type": "toggle",
+      "default": false,
+      "section": "Layout"
+    },
+    {
+      "id": "stickyHeaderOff",
+      "label": "Disable sticky header",
+      "type": "toggle",
+      "default": false,
+      "section": "Layout"
+    },
+    {
+      "id": "roundedCorners",
+      "label": "Rounded corners",
+      "type": "toggle",
+      "default": true,
+      "section": "Layout"
+    },
+    {
+      "id": "cornerRadius",
+      "label": "Corner radius",
+      "type": "slider",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 10,
+      "section": "Layout",
+      "depends": "roundedCorners"
+    },
+    {
+      "id": "secretLogo",
+      "label": "Secret logo (804 triggers)",
+      "type": "logo-grid",
+      "options": [
+        {
+          "value": "none",
+          "label": "None",
+          "emoji": "∅"
+        },
+        {
+          "value": "67",
+          "label": "67",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/67.png"
+        },
+        {
+          "value": "8bit",
+          "label": "8bit",
+          "emoji": "👾",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/8bit.png"
+        },
+        {
+          "value": "a knight of the seven kingdoms",
+          "label": "A Knight of the Seven Kingdoms",
+          "emoji": "👑",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/a_knight_of_the_seven_kingdoms.png"
+        },
+        {
+          "value": "abraham lincoln",
+          "label": "Abraham Lincoln",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/abraham_lincoln.png"
+        },
+        {
+          "value": "abstract",
+          "label": "Abstract",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/abstract.png"
+        },
+        {
+          "value": "ada lovelace",
+          "label": "Ada Lovelace",
+          "emoji": "💖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ada_lovelace.png"
+        },
+        {
+          "value": "aerith gainsborough",
+          "label": "Aerith Gainsborough",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/aerith_gainsborough.png"
+        },
+        {
+          "value": "agatha christie",
+          "label": "Agatha Christie",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/agatha_christie.png"
+        },
+        {
+          "value": "agent smith",
+          "label": "Agent Smith",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/agent_smith.png"
+        },
+        {
+          "value": "akita neru",
+          "label": "Akita Neru",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/akita_neru.png"
+        },
+        {
+          "value": "aladdin sane",
+          "label": "Aladdin Sane",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/aladdin_sane.png"
+        },
+        {
+          "value": "alaves",
+          "label": "Alaves",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/alaves.png"
+        },
+        {
+          "value": "albert einstein",
+          "label": "Albert Einstein",
+          "emoji": "🔬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/albert_einstein.png"
+        },
+        {
+          "value": "albus dumbledore",
+          "label": "Albus Dumbledore",
+          "emoji": "🧙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/albus_dumbledore.png"
+        },
+        {
+          "value": "alice in wonderland",
+          "label": "Alice in Wonderland",
+          "emoji": "🐰",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/alice_in_wonderland.png"
+        },
+        {
+          "value": "alien",
+          "label": "Alien",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/alien.png"
+        },
+        {
+          "value": "aloy",
+          "label": "Aloy",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/aloy.png"
+        },
+        {
+          "value": "alyx vance",
+          "label": "Alyx Vance",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/alyx_vance.png"
+        },
+        {
+          "value": "amelia earhart",
+          "label": "Amelia Earhart",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/amelia_earhart.png"
+        },
+        {
+          "value": "among us",
+          "label": "Among Us",
+          "emoji": "🎮",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/among_us.png"
+        },
+        {
+          "value": "anaheim ducks",
+          "label": "Anaheim Ducks",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/anaheim_ducks.png"
+        },
+        {
+          "value": "android",
+          "label": "Android",
+          "emoji": "🤖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/android.png"
+        },
+        {
+          "value": "andy warhol",
+          "label": "Andy Warhol",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/andy_warhol.png"
+        },
+        {
+          "value": "angine de poitrine",
+          "label": "Angine de Poitrine",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/angine_de_poitrine.png"
+        },
+        {
+          "value": "ant-man",
+          "label": "Ant-Man",
+          "emoji": "🦸",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ant_man.png"
+        },
+        {
+          "value": "apollo 11",
+          "label": "Apollo 11",
+          "emoji": "🚀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/apollo_11.png"
+        },
+        {
+          "value": "applejack",
+          "label": "Applejack",
+          "emoji": "🦄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/applejack.png"
+        },
+        {
+          "value": "aretha franklin",
+          "label": "Aretha Franklin",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/aretha_franklin.png"
+        },
+        {
+          "value": "aristotle",
+          "label": "Aristotle",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/aristotle.png"
+        },
+        {
+          "value": "arizona cardinals",
+          "label": "Arizona Cardinals",
+          "emoji": "🏎️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/arizona_cardinals.png"
+        },
+        {
+          "value": "arizona diamondbacks",
+          "label": "Arizona Diamondbacks",
+          "emoji": "💎",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/arizona_diamondbacks.png"
+        },
+        {
+          "value": "arsenal",
+          "label": "Arsenal",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/arsenal.png"
+        },
+        {
+          "value": "arthur morgan",
+          "label": "Arthur Morgan",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/arthur_morgan.png"
+        },
+        {
+          "value": "arya stark",
+          "label": "Arya Stark",
+          "emoji": "🤖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/arya_stark.png"
+        },
+        {
+          "value": "ash ketchum",
+          "label": "Ash Ketchum",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ash_ketchum.png"
+        },
+        {
+          "value": "asterix and obelix",
+          "label": "Asterix and Obelix",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/asterix_and_obelix.png"
+        },
+        {
+          "value": "aston villa",
+          "label": "Aston Villa",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/aston_villa.png"
+        },
+        {
+          "value": "astro bot",
+          "label": "Astro Bot",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/astro_bot.png"
+        },
+        {
+          "value": "astronaut",
+          "label": "Astronaut",
+          "emoji": "🚀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/astronaut.png"
+        },
+        {
+          "value": "astronomer",
+          "label": "Astronomer",
+          "emoji": "🔬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/astronomer.png"
+        },
+        {
+          "value": "athena",
+          "label": "Athena",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/athena.png"
+        },
+        {
+          "value": "athletic bilbao",
+          "label": "Athletic Bilbao",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/athletic_club.png"
+        },
+        {
+          "value": "atlanta braves",
+          "label": "Atlanta Braves",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/atlanta_braves.png"
+        },
+        {
+          "value": "atlanta falcons",
+          "label": "Atlanta Falcons",
+          "emoji": "🦅",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/atlanta_falcons.png"
+        },
+        {
+          "value": "atlanta hawks",
+          "label": "Atlanta Hawks",
+          "emoji": "🦅",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/atlanta_hawks.png"
+        },
+        {
+          "value": "atlanta united",
+          "label": "Atlanta United",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/atlanta_united.png"
+        },
+        {
+          "value": "atletico madrid",
+          "label": "Atletico Madrid",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/atletico_madrid.png"
+        },
+        {
+          "value": "austin fc",
+          "label": "Austin FC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/austin_fc.png"
+        },
+        {
+          "value": "avatar",
+          "label": "Avatar",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/avatar.png"
+        },
+        {
+          "value": "avatar aang",
+          "label": "Avatar Aang",
+          "emoji": "🌀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/avatar_aang.png"
+        },
+        {
+          "value": "aviator",
+          "label": "Aviator",
+          "emoji": "✈️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/aviator.png"
+        },
+        {
+          "value": "azula",
+          "label": "Azula",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/azula.png"
+        },
+        {
+          "value": "azumanga daioh",
+          "label": "Azumanga Daioh",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/azumanga_daioh.png"
+        },
+        {
+          "value": "baby shark",
+          "label": "Baby Shark",
+          "emoji": "🐙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/baby_shark.png"
+        },
+        {
+          "value": "badtz-maru",
+          "label": "Badtz-Maru",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/badtz-maru.png"
+        },
+        {
+          "value": "baltimore orioles",
+          "label": "Baltimore Orioles",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/baltimore_orioles.png"
+        },
+        {
+          "value": "baltimore ravens",
+          "label": "Baltimore Ravens",
+          "emoji": "🦅",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/baltimore_ravens.png"
+        },
+        {
+          "value": "barbie",
+          "label": "Barbie",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/barbie.png"
+        },
+        {
+          "value": "barret wallace",
+          "label": "Barret Wallace",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/barret_wallace.png"
+        },
+        {
+          "value": "bashful",
+          "label": "Bashful",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/bashful.png"
+        },
+        {
+          "value": "basquiat",
+          "label": "Basquiat",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/basquiat.png"
+        },
+        {
+          "value": "batman",
+          "label": "Batman",
+          "emoji": "🦇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/batman.png"
+        },
+        {
+          "value": "bauhaus",
+          "label": "Bauhaus",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/bauhaus.png"
+        },
+        {
+          "value": "baymax",
+          "label": "Baymax",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/baymax.png"
+        },
+        {
+          "value": "beetlejuice",
+          "label": "Beetlejuice",
+          "emoji": "👻",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/beetlejuice.png"
+        },
+        {
+          "value": "belle",
+          "label": "Belle",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/belle.png"
+        },
+        {
+          "value": "betty boop",
+          "label": "Betty Boop",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/betty_boop.png"
+        },
+        {
+          "value": "biff",
+          "label": "Biff",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/biff.png"
+        },
+        {
+          "value": "bilbo baggins",
+          "label": "Bilbo Baggins",
+          "emoji": "💍",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/bilbo_baggins.png"
+        },
+        {
+          "value": "billie holiday",
+          "label": "Billie Holiday",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/billie_holiday.png"
+        },
+        {
+          "value": "black panther",
+          "label": "Black Panther",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/black_panther.png"
+        },
+        {
+          "value": "blowtorch",
+          "label": "Blowtorch",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/blowtorch.png"
+        },
+        {
+          "value": "bluey",
+          "label": "Bluey",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/bluey.png"
+        },
+        {
+          "value": "bob ross",
+          "label": "Bob Ross",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/bob_ross.png"
+        },
+        {
+          "value": "boba fett",
+          "label": "Boba Fett",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/boba_fett.png"
+        },
+        {
+          "value": "bomberman",
+          "label": "Bomberman",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/bomberman.png"
+        },
+        {
+          "value": "borg",
+          "label": "Borg",
+          "emoji": "🚀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/borg.png"
+        },
+        {
+          "value": "boston bruins",
+          "label": "Boston Bruins",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/boston_bruins.png"
+        },
+        {
+          "value": "boston celtics",
+          "label": "Boston Celtics",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/boston_celtics.png"
+        },
+        {
+          "value": "boston red sox",
+          "label": "Boston Red Sox",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/boston_red_sox.png"
+        },
+        {
+          "value": "bournemouth",
+          "label": "Bournemouth",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/bournemouth.png"
+        },
+        {
+          "value": "bowser",
+          "label": "Bowser",
+          "emoji": "🍄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/bowser.png"
+        },
+        {
+          "value": "brentford",
+          "label": "Brentford",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/brentford.png"
+        },
+        {
+          "value": "brighton hove albion",
+          "label": "Brighton Hove Albion",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/brighton_hove_albion.png"
+        },
+        {
+          "value": "brooklyn nets",
+          "label": "Brooklyn Nets",
+          "emoji": "🏴‍☠️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/brooklyn_nets.png"
+        },
+        {
+          "value": "bruce lee",
+          "label": "Bruce Lee",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/bruce_lee.png"
+        },
+        {
+          "value": "buffalo bills",
+          "label": "Buffalo Bills",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/buffalo_bills.png"
+        },
+        {
+          "value": "buffalo sabres",
+          "label": "Buffalo Sabres",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/buffalo_sabres.png"
+        },
+        {
+          "value": "bulbasaur",
+          "label": "Bulbasaur",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/bulbasaur.png"
+        },
+        {
+          "value": "bumble bee",
+          "label": "Bumble Bee",
+          "emoji": "🐝",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/bumble_bee.png"
+        },
+        {
+          "value": "buzz lightyear",
+          "label": "Buzz Lightyear",
+          "emoji": "🚀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/buzz_lightyear.png"
+        },
+        {
+          "value": "c-3po",
+          "label": "C-3PO",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/c3po.png"
+        },
+        {
+          "value": "cd leganés",
+          "label": "CD Leganés",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/leganes.png"
+        },
+        {
+          "value": "cf montreal",
+          "label": "CF Montreal",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cf_montreal.png"
+        },
+        {
+          "value": "cacodemon",
+          "label": "Cacodemon",
+          "emoji": "🎃",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cacodemon.png"
+        },
+        {
+          "value": "cadiz cf",
+          "label": "Cadiz CF",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cadiz.png"
+        },
+        {
+          "value": "cait sith",
+          "label": "Cait Sith",
+          "emoji": "⭐",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cait_sith.png"
+        },
+        {
+          "value": "calgary flames",
+          "label": "Calgary Flames",
+          "emoji": "🔥",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/calgary_flames.png"
+        },
+        {
+          "value": "captain ahab",
+          "label": "Captain Ahab",
+          "emoji": "🐳",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/captain_ahab.png"
+        },
+        {
+          "value": "captain america",
+          "label": "Captain America",
+          "emoji": "🏴‍☠️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/captain_america.png"
+        },
+        {
+          "value": "captain hook",
+          "label": "Captain Hook",
+          "emoji": "🏴‍☠️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/captain_hook.png"
+        },
+        {
+          "value": "carmen miranda",
+          "label": "Carmen Miranda",
+          "emoji": "🏎️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/carmen_miranda.png"
+        },
+        {
+          "value": "carmen sandiego",
+          "label": "Carmen Sandiego",
+          "emoji": "🏜️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/carmen_sandiego.png"
+        },
+        {
+          "value": "carolina hurricanes",
+          "label": "Carolina Hurricanes",
+          "emoji": "🏎️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/carolina_hurricanes.png"
+        },
+        {
+          "value": "carolina panthers",
+          "label": "Carolina Panthers",
+          "emoji": "🏎️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/carolina_panthers.png"
+        },
+        {
+          "value": "cat",
+          "label": "Cat",
+          "emoji": "🐱",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cat.png"
+        },
+        {
+          "value": "catcher in the rye",
+          "label": "Catcher in the Rye",
+          "emoji": "🐱",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/catcher_in_the_rye.png"
+        },
+        {
+          "value": "catwoman",
+          "label": "Catwoman",
+          "emoji": "🐱",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/catwoman.png"
+        },
+        {
+          "value": "celia cruz",
+          "label": "Celia Cruz",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/celia_cruz.png"
+        },
+        {
+          "value": "celta vigo",
+          "label": "Celta Vigo",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/celta_vigo.png"
+        },
+        {
+          "value": "chainsaw man",
+          "label": "Chainsaw Man",
+          "emoji": "🍵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chainsaw_man.png"
+        },
+        {
+          "value": "charizard",
+          "label": "Charizard",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/charizard.png"
+        },
+        {
+          "value": "charlie brown",
+          "label": "Charlie Brown",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/charlie_brown.png"
+        },
+        {
+          "value": "charlie chaplin",
+          "label": "Charlie Chaplin",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/charlie_chaplin.png"
+        },
+        {
+          "value": "charlotte fc",
+          "label": "Charlotte FC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/charlotte_fc.png"
+        },
+        {
+          "value": "charlotte hornets",
+          "label": "Charlotte Hornets",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/charlotte_hornets.png"
+        },
+        {
+          "value": "chef",
+          "label": "Chef",
+          "emoji": "🍔",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chef.png"
+        },
+        {
+          "value": "chell",
+          "label": "Chell",
+          "emoji": "😈",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chell.png"
+        },
+        {
+          "value": "chelsea",
+          "label": "Chelsea",
+          "emoji": "🌊",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chelsea.png"
+        },
+        {
+          "value": "chicago bears",
+          "label": "Chicago Bears",
+          "emoji": "🐻",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chicago_bears.png"
+        },
+        {
+          "value": "chicago blackhawks",
+          "label": "Chicago Blackhawks",
+          "emoji": "🦅",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chicago_blackhawks.png"
+        },
+        {
+          "value": "chicago cubs",
+          "label": "Chicago Cubs",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chicago_cubs.png"
+        },
+        {
+          "value": "chicago fire fc",
+          "label": "Chicago Fire FC",
+          "emoji": "🔥",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chicago_fire_fc.png"
+        },
+        {
+          "value": "chicago white sox",
+          "label": "Chicago White Sox",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chicago_white_sox.png"
+        },
+        {
+          "value": "chicago bulls",
+          "label": "Chicago bulls",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chicago_bulls.png"
+        },
+        {
+          "value": "chihiro ogino",
+          "label": "Chihiro Ogino",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chihiro_ogino.png"
+        },
+        {
+          "value": "chocobo",
+          "label": "Chocobo",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chocobo.png"
+        },
+        {
+          "value": "chococat",
+          "label": "Chococat",
+          "emoji": "🐱",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chococat.png"
+        },
+        {
+          "value": "chuck norris",
+          "label": "Chuck Norris",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chuck_norris.png"
+        },
+        {
+          "value": "chucky",
+          "label": "Chucky",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chucky.png"
+        },
+        {
+          "value": "chun-li",
+          "label": "Chun-Li",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/chun-li.png"
+        },
+        {
+          "value": "cid highwind",
+          "label": "Cid Highwind",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cid_highwind.png"
+        },
+        {
+          "value": "cincinnati bengals",
+          "label": "Cincinnati Bengals",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cincinnati_bengals.png"
+        },
+        {
+          "value": "cincinnati reds",
+          "label": "Cincinnati Reds",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cincinnati_reds.png"
+        },
+        {
+          "value": "cinderella",
+          "label": "Cinderella",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cinderella.png"
+        },
+        {
+          "value": "cinnamoroll",
+          "label": "Cinnamoroll",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cinnamoroll.png"
+        },
+        {
+          "value": "clash royale",
+          "label": "Clash Royale",
+          "emoji": "🍺",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/clash_royale.png"
+        },
+        {
+          "value": "clash of clans",
+          "label": "Clash of Clans",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/clash_of_clans.png"
+        },
+        {
+          "value": "claude monet",
+          "label": "Claude Monet",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/claude_monet.png"
+        },
+        {
+          "value": "cleopatra",
+          "label": "Cleopatra",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cleopatra.png"
+        },
+        {
+          "value": "cleveland browns",
+          "label": "Cleveland Browns",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cleveland_browns.png"
+        },
+        {
+          "value": "cleveland cavaliers",
+          "label": "Cleveland Cavaliers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cleveland_cavaliers.png"
+        },
+        {
+          "value": "cleveland guardians",
+          "label": "Cleveland Guardians",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cleveland_guardians.png"
+        },
+        {
+          "value": "cloud strife",
+          "label": "Cloud Strife",
+          "emoji": "🎮",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cloud_strife.png"
+        },
+        {
+          "value": "coach z",
+          "label": "Coach Z",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/coach_z.png"
+        },
+        {
+          "value": "colorado avalanche",
+          "label": "Colorado Avalanche",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/colorado_avalanche.png"
+        },
+        {
+          "value": "colorado rapids",
+          "label": "Colorado Rapids",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/colorado_rapids.png"
+        },
+        {
+          "value": "colorado rockies",
+          "label": "Colorado Rockies",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/colorado_rockies.png"
+        },
+        {
+          "value": "columbus blue jackets",
+          "label": "Columbus Blue Jackets",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/columbus_blue_jackets.png"
+        },
+        {
+          "value": "columbus crew",
+          "label": "Columbus Crew",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/columbus_crew.png"
+        },
+        {
+          "value": "cowboy",
+          "label": "Cowboy",
+          "emoji": "🐴",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cowboy.png"
+        },
+        {
+          "value": "cowgirl",
+          "label": "Cowgirl",
+          "emoji": "🐴",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cowgirl.png"
+        },
+        {
+          "value": "crash bandicoot",
+          "label": "Crash Bandicoot",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/crash_bandicoot.png"
+        },
+        {
+          "value": "cruella de vil",
+          "label": "Cruella de Vil",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cruella_de_vil.png"
+        },
+        {
+          "value": "crystal palace",
+          "label": "Crystal Palace",
+          "emoji": "💎",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/crystal_palace.png"
+        },
+        {
+          "value": "cubism",
+          "label": "Cubism",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cubism.png"
+        },
+        {
+          "value": "cutler beckett",
+          "label": "Cutler Beckett",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cutler_beckett.png"
+        },
+        {
+          "value": "cyclops",
+          "label": "Cyclops",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cyclops.png"
+        },
+        {
+          "value": "cyrano de bergerac",
+          "label": "Cyrano de Bergerac",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/cyrano_de_bergerac.png"
+        },
+        {
+          "value": "d.c. united",
+          "label": "D.C. United",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dc_united.png"
+        },
+        {
+          "value": "doom",
+          "label": "DOOM",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/doom.png"
+        },
+        {
+          "value": "daenerys targaryen",
+          "label": "Daenerys Targaryen",
+          "emoji": "🐉",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/daenerys_targaryen.png"
+        },
+        {
+          "value": "daffy duck",
+          "label": "Daffy Duck",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/daffy_duck.png"
+        },
+        {
+          "value": "daft punk",
+          "label": "Daft Punk",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/daft_punk.png"
+        },
+        {
+          "value": "daisy duck",
+          "label": "Daisy Duck",
+          "emoji": "🌸",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/daisy_duck.png"
+        },
+        {
+          "value": "dalek",
+          "label": "Dalek",
+          "emoji": "🍺",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dalek.png"
+        },
+        {
+          "value": "dallas cowboys",
+          "label": "Dallas Cowboys",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dallas_cowboys.png"
+        },
+        {
+          "value": "dallas mavericks",
+          "label": "Dallas Mavericks",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dallas_mavericks.png"
+        },
+        {
+          "value": "dallas stars",
+          "label": "Dallas Stars",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dallas_stars.png"
+        },
+        {
+          "value": "danganronpa",
+          "label": "Danganronpa",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/danganronpa.png"
+        },
+        {
+          "value": "darkwing duck",
+          "label": "Darkwing Duck",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/darkwing_duck.png"
+        },
+        {
+          "value": "darth vader",
+          "label": "Darth Vader",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/darth_vader.png"
+        },
+        {
+          "value": "davy jones",
+          "label": "Davy Jones",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/davy_jones.png"
+        },
+        {
+          "value": "dazai",
+          "label": "Dazai",
+          "emoji": "🤖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dazai.png"
+        },
+        {
+          "value": "deadpool",
+          "label": "Deadpool",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/deadpool.png"
+        },
+        {
+          "value": "demogorgon",
+          "label": "Demogorgon",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/demogorgon.png"
+        },
+        {
+          "value": "denver broncos",
+          "label": "Denver Broncos",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/denver_broncos.png"
+        },
+        {
+          "value": "denver nuggets",
+          "label": "Denver Nuggets",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/denver_nuggets.png"
+        },
+        {
+          "value": "detroit become human",
+          "label": "Detroit Become Human",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/detroit_become_human.png"
+        },
+        {
+          "value": "detroit lions",
+          "label": "Detroit Lions",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/detroit_lions.png"
+        },
+        {
+          "value": "detroit pistons",
+          "label": "Detroit Pistons",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/detroit_pistons.png"
+        },
+        {
+          "value": "detroit red wings",
+          "label": "Detroit Red Wings",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/detroit_red_wings.png"
+        },
+        {
+          "value": "detroit tigers",
+          "label": "Detroit Tigers",
+          "emoji": "⛳",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/detroit_tigers.png"
+        },
+        {
+          "value": "diver",
+          "label": "Diver",
+          "emoji": "💧",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/diver.png"
+        },
+        {
+          "value": "dobby",
+          "label": "Dobby",
+          "emoji": "🧝",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dobby.png"
+        },
+        {
+          "value": "doc",
+          "label": "Doc",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/doc.png"
+        },
+        {
+          "value": "doctor doom",
+          "label": "Doctor Doom",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/doctor_doom.png"
+        },
+        {
+          "value": "doctor strange",
+          "label": "Doctor Strange",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/doctor_strange.png"
+        },
+        {
+          "value": "dog",
+          "label": "Dog",
+          "emoji": "🐶",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dog.png"
+        },
+        {
+          "value": "doki doki literature club",
+          "label": "Doki Doki Literature Club",
+          "emoji": "📚",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/doki_doki_literature_club.png"
+        },
+        {
+          "value": "dominic toretto",
+          "label": "Dominic Toretto",
+          "emoji": "🏎️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dominic_toretto.png"
+        },
+        {
+          "value": "don quixote",
+          "label": "Don Quixote",
+          "emoji": "🛡️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/don_quixote.png"
+        },
+        {
+          "value": "donald duck",
+          "label": "Donald Duck",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/donald_duck.png"
+        },
+        {
+          "value": "donatello",
+          "label": "Donatello",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/donatello.png"
+        },
+        {
+          "value": "donkey kong",
+          "label": "Donkey Kong",
+          "emoji": "🎮",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/donkey_kong.png"
+        },
+        {
+          "value": "dopey",
+          "label": "Dopey",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dopey.png"
+        },
+        {
+          "value": "dora the explorer",
+          "label": "Dora the Explorer",
+          "emoji": "🗺️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dora_the_explorer.png"
+        },
+        {
+          "value": "doraemon",
+          "label": "Doraemon",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/doraemon.png"
+        },
+        {
+          "value": "dostoevsky",
+          "label": "Dostoevsky",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dostoevsky.png"
+        },
+        {
+          "value": "dr. emmett brown",
+          "label": "Dr. Emmett Brown",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dr_emmett_brown.png"
+        },
+        {
+          "value": "dr. evil",
+          "label": "Dr. Evil",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dr_evil.png"
+        },
+        {
+          "value": "dr. jekyll",
+          "label": "Dr. Jekyll",
+          "emoji": "🔬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dr_jekyll.png"
+        },
+        {
+          "value": "dr. jekyll and mr. hyde",
+          "label": "Dr. Jekyll and Mr. Hyde",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dr_jekyll_and_mr_hyde.png"
+        },
+        {
+          "value": "dr. watson",
+          "label": "Dr. Watson",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dr_watson.png"
+        },
+        {
+          "value": "dr. who",
+          "label": "Dr. Who",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dr_who.png"
+        },
+        {
+          "value": "dracula",
+          "label": "Dracula",
+          "emoji": "🧛",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dracula.png"
+        },
+        {
+          "value": "drax the destroyer",
+          "label": "Drax the Destroyer",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/drax_the_destroyer.png"
+        },
+        {
+          "value": "duck dodgers",
+          "label": "Duck Dodgers",
+          "emoji": "🚀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/duck_dodgers.png"
+        },
+        {
+          "value": "duke nukem",
+          "label": "Duke Nukem",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/duke_nukem.png"
+        },
+        {
+          "value": "dungeon crawler carl",
+          "label": "Dungeon Crawler Carl",
+          "emoji": "🏎️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/dungeon_crawler_carl.png"
+        },
+        {
+          "value": "duolingo",
+          "label": "Duolingo",
+          "emoji": "🦉",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/duolingo.png"
+        },
+        {
+          "value": "easter bunny",
+          "label": "Easter Bunny",
+          "emoji": "🐰",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/easter_bunny.png"
+        },
+        {
+          "value": "ebenezer scrooge",
+          "label": "Ebenezer Scrooge",
+          "emoji": "🎄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ebenezer_scrooge.png"
+        },
+        {
+          "value": "eddie munson",
+          "label": "Eddie Munson",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/eddie_munson.png"
+        },
+        {
+          "value": "eddie the head",
+          "label": "Eddie the Head",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/eddie_the_head.png"
+        },
+        {
+          "value": "edgar allan poe",
+          "label": "Edgar Allan Poe",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/edgar_allan_poe.png"
+        },
+        {
+          "value": "edmonton oilers",
+          "label": "Edmonton Oilers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/edmonton_oilers.png"
+        },
+        {
+          "value": "edward scissorhands",
+          "label": "Edward Scissorhands",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/edward_scissorhands.png"
+        },
+        {
+          "value": "elphaba",
+          "label": "Elphaba",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/elphaba.png"
+        },
+        {
+          "value": "elsa",
+          "label": "Elsa",
+          "emoji": "🧊",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/elsa.png"
+        },
+        {
+          "value": "elvis",
+          "label": "Elvis",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/elvis.png"
+        },
+        {
+          "value": "enrico caruso",
+          "label": "Enrico Caruso",
+          "emoji": "🏎️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/enrico_caruso.png"
+        },
+        {
+          "value": "eric cartman",
+          "label": "Eric Cartman",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/eric_cartman.png"
+        },
+        {
+          "value": "everton",
+          "label": "Everton",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/everton.png"
+        },
+        {
+          "value": "expressionism",
+          "label": "Expressionism",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/expressionism.png"
+        },
+        {
+          "value": "fc barcelona",
+          "label": "FC Barcelona",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/barcelona.png"
+        },
+        {
+          "value": "fc cincinnati",
+          "label": "FC Cincinnati",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/fc_cincinnati.png"
+        },
+        {
+          "value": "fc dallas",
+          "label": "FC Dallas",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/fc_dallas.png"
+        },
+        {
+          "value": "faust",
+          "label": "Faust",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/faust.png"
+        },
+        {
+          "value": "fauvism",
+          "label": "Fauvism",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/fauvism.png"
+        },
+        {
+          "value": "fifa world cup",
+          "label": "Fifa World Cup",
+          "emoji": "⚽",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/fifa_world_cup.png"
+        },
+        {
+          "value": "finn the human",
+          "label": "Finn the Human",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/finn_the_human.png"
+        },
+        {
+          "value": "firefighter",
+          "label": "Firefighter",
+          "emoji": "🚚",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/firefighter.png"
+        },
+        {
+          "value": "florida panthers",
+          "label": "Florida Panthers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/florida_panthers.png"
+        },
+        {
+          "value": "fluttershy",
+          "label": "Fluttershy",
+          "emoji": "🦄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/fluttershy.png"
+        },
+        {
+          "value": "forgejo",
+          "label": "Forgejo",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/forgejo.png"
+        },
+        {
+          "value": "formula 1",
+          "label": "Formula 1",
+          "emoji": "⚽",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/formula_1.png"
+        },
+        {
+          "value": "fox mccloud",
+          "label": "Fox McCloud",
+          "emoji": "🦊",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/fox_mccloud.png"
+        },
+        {
+          "value": "frankenstein",
+          "label": "Frankenstein",
+          "emoji": "👾",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/frankenstein.png"
+        },
+        {
+          "value": "fred flintstone",
+          "label": "Fred Flintstone",
+          "emoji": "🦕",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/fred_flintstone.png"
+        },
+        {
+          "value": "freddy krueger",
+          "label": "Freddy Krueger",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/freddy_krueger.png"
+        },
+        {
+          "value": "frederic chopin",
+          "label": "Frederic Chopin",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/frederic_chopin.png"
+        },
+        {
+          "value": "freebsd",
+          "label": "FreeBSD",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/freebsd.png"
+        },
+        {
+          "value": "frida kahlo",
+          "label": "Frida Kahlo",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/frida_kahlo.png"
+        },
+        {
+          "value": "friday the 13th",
+          "label": "Friday the 13th",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/friday_the_13th.png"
+        },
+        {
+          "value": "friends",
+          "label": "Friends",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/friends.png"
+        },
+        {
+          "value": "frieren",
+          "label": "Frieren",
+          "emoji": "🧝‍♀️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/frieren.png"
+        },
+        {
+          "value": "frodo baggins",
+          "label": "Frodo Baggins",
+          "emoji": "💍",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/frodo_baggins.png"
+        },
+        {
+          "value": "fulham",
+          "label": "Fulham",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/fulham.png"
+        },
+        {
+          "value": "g-man",
+          "label": "G-Man",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/g-man.png"
+        },
+        {
+          "value": "gnu",
+          "label": "GNU",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gnu.png"
+        },
+        {
+          "value": "galactus",
+          "label": "Galactus",
+          "emoji": "🪐",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/galactus.png"
+        },
+        {
+          "value": "game of thrones",
+          "label": "Game of thrones",
+          "emoji": "👑",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/game_of_thrones.png"
+        },
+        {
+          "value": "gamora",
+          "label": "Gamora",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gamora.png"
+        },
+        {
+          "value": "gandalf",
+          "label": "Gandalf",
+          "emoji": "🧙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gandalf.png"
+        },
+        {
+          "value": "garfield",
+          "label": "Garfield",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/garfield.png"
+        },
+        {
+          "value": "gargamel",
+          "label": "Gargamel",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gargamel.png"
+        },
+        {
+          "value": "geese howard",
+          "label": "Geese Howard",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/geese_howard.png"
+        },
+        {
+          "value": "gengar",
+          "label": "Gengar",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gengar.png"
+        },
+        {
+          "value": "geometry dash",
+          "label": "Geometry Dash",
+          "emoji": "🔢",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/geometry_dash.png"
+        },
+        {
+          "value": "george washington",
+          "label": "George Washington",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/george_washington.png"
+        },
+        {
+          "value": "geralt of rivia",
+          "label": "Geralt of Rivia",
+          "emoji": "🐺",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/geralt_of_rivia.png"
+        },
+        {
+          "value": "getafe cf",
+          "label": "Getafe CF",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/getafe.png"
+        },
+        {
+          "value": "ghost",
+          "label": "Ghost",
+          "emoji": "🎃",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ghost.png"
+        },
+        {
+          "value": "gilgamesh",
+          "label": "Gilgamesh",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gilgamesh.png"
+        },
+        {
+          "value": "giro d'italia",
+          "label": "Giro d'Italia",
+          "emoji": "⚽",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/giro_ditalia.png"
+        },
+        {
+          "value": "girona fc",
+          "label": "Girona FC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/girona.png"
+        },
+        {
+          "value": "github",
+          "label": "GitHub",
+          "emoji": "💻",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/github.png"
+        },
+        {
+          "value": "giyu tomioka",
+          "label": "Giyu Tomioka",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/giyu_tomioka.png"
+        },
+        {
+          "value": "gizmo",
+          "label": "Gizmo",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gizmo.png"
+        },
+        {
+          "value": "glados",
+          "label": "Glados",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/glados.png"
+        },
+        {
+          "value": "glinda",
+          "label": "Glinda",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/glinda.png"
+        },
+        {
+          "value": "godzilla",
+          "label": "Godzilla",
+          "emoji": "👾",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/godzilla.png"
+        },
+        {
+          "value": "goku",
+          "label": "Goku",
+          "emoji": "🐉",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/goku.png"
+        },
+        {
+          "value": "golang",
+          "label": "Golang",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/golang.png"
+        },
+        {
+          "value": "golden state warriors",
+          "label": "Golden State Warriors",
+          "emoji": "🥷",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/golden_state_warriors.png"
+        },
+        {
+          "value": "gollum",
+          "label": "Gollum",
+          "emoji": "💍",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gollum.png"
+        },
+        {
+          "value": "gordon freeman",
+          "label": "Gordon Freeman",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gordon_freeman.png"
+        },
+        {
+          "value": "green bay packers",
+          "label": "Green Bay Packers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/green_bay_packers.png"
+        },
+        {
+          "value": "gremlins",
+          "label": "Gremlins",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gremlins.png"
+        },
+        {
+          "value": "gritty",
+          "label": "Gritty",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gritty.png"
+        },
+        {
+          "value": "grogu",
+          "label": "Grogu",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/grogu.png"
+        },
+        {
+          "value": "gromit",
+          "label": "Gromit",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gromit.png"
+        },
+        {
+          "value": "groot",
+          "label": "Groot",
+          "emoji": "🌳",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/groot.png"
+        },
+        {
+          "value": "grumpy",
+          "label": "Grumpy",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/grumpy.png"
+        },
+        {
+          "value": "gumby",
+          "label": "Gumby",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gumby.png"
+        },
+        {
+          "value": "gumi",
+          "label": "Gumi",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/gumi.png"
+        },
+        {
+          "value": "guybrush threepwood",
+          "label": "Guybrush Threepwood",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/guybrush_threepwood.png"
+        },
+        {
+          "value": "hal 9000",
+          "label": "HAL 9000",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hal_9000.png"
+        },
+        {
+          "value": "hacker news",
+          "label": "Hacker News",
+          "emoji": "💻",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hacker_news.png"
+        },
+        {
+          "value": "hamlet",
+          "label": "Hamlet",
+          "emoji": "👻",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hamlet.png"
+        },
+        {
+          "value": "hannibal lecter",
+          "label": "Hannibal Lecter",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hannibal_lecter.png"
+        },
+        {
+          "value": "hans gruber",
+          "label": "Hans Gruber",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hans_gruber.png"
+        },
+        {
+          "value": "hanyuu",
+          "label": "Hanyuu",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hanyuu.png"
+        },
+        {
+          "value": "happy",
+          "label": "Happy",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/happy.png"
+        },
+        {
+          "value": "harley quinn",
+          "label": "Harley Quinn",
+          "emoji": "🏍️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/harley_quinn.png"
+        },
+        {
+          "value": "harriet tubman",
+          "label": "Harriet Tubman",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/harriet_tubman.png"
+        },
+        {
+          "value": "harry potter",
+          "label": "Harry Potter",
+          "emoji": "🧙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/harry_potter.png"
+        },
+        {
+          "value": "haruhi suzumiya",
+          "label": "Haruhi Suzumiya",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/haruhi_suzumiya.png"
+        },
+        {
+          "value": "hatsune miku",
+          "label": "Hatsune Miku",
+          "emoji": "☀️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hatsune_miku.png"
+        },
+        {
+          "value": "hellboy",
+          "label": "Hellboy",
+          "emoji": "😈",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hellboy.png"
+        },
+        {
+          "value": "hello kitty",
+          "label": "Hello Kitty",
+          "emoji": "🐱",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hello_kitty.png"
+        },
+        {
+          "value": "henri matisse",
+          "label": "Henri Matisse",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/henri_matisse.png"
+        },
+        {
+          "value": "hercules",
+          "label": "Hercules",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hercules.png"
+        },
+        {
+          "value": "hermione granger",
+          "label": "Hermione Granger",
+          "emoji": "✨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hermione_granger.png"
+        },
+        {
+          "value": "hollow knight",
+          "label": "Hollow Knight",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hollow_knight.png"
+        },
+        {
+          "value": "homestar runner",
+          "label": "Homestar Runner",
+          "emoji": "⭐",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/homestar_runner.png"
+        },
+        {
+          "value": "houston astros",
+          "label": "Houston Astros",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/houston_astros.png"
+        },
+        {
+          "value": "houston dynamo fc",
+          "label": "Houston Dynamo FC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/houston_dynamo_fc.png"
+        },
+        {
+          "value": "houston rockets",
+          "label": "Houston Rockets",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/houston_rockets.png"
+        },
+        {
+          "value": "houston texans",
+          "label": "Houston Texans",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/houston_texans.png"
+        },
+        {
+          "value": "huckleberry finn",
+          "label": "Huckleberry Finn",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/huckleberry_finn.png"
+        },
+        {
+          "value": "human torch",
+          "label": "Human Torch",
+          "emoji": "🔥",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/human_torch.png"
+        },
+        {
+          "value": "hydra",
+          "label": "Hydra",
+          "emoji": "👾",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hydra.png"
+        },
+        {
+          "value": "hyperrealism",
+          "label": "Hyperrealism",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/hyperrealism.png"
+        },
+        {
+          "value": "impressionism",
+          "label": "Impressionism",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/impressionism.png"
+        },
+        {
+          "value": "incredibox",
+          "label": "Incredibox",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/incredibox.png"
+        },
+        {
+          "value": "indiana jones",
+          "label": "Indiana Jones",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/indiana_jones.png"
+        },
+        {
+          "value": "indiana pacers",
+          "label": "Indiana Pacers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/indiana_pacers.png"
+        },
+        {
+          "value": "indianapolis colts",
+          "label": "Indianapolis Colts",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/indianapolis_colts.png"
+        },
+        {
+          "value": "inspector gadget",
+          "label": "Inspector Gadget",
+          "emoji": "🤖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/inspector_gadget.png"
+        },
+        {
+          "value": "inter miami cf",
+          "label": "Inter Miami CF",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/inter_miami_cf.png"
+        },
+        {
+          "value": "invisible woman",
+          "label": "Invisible Woman",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/invisible_woman.png"
+        },
+        {
+          "value": "ipswich town",
+          "label": "Ipswich Town",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ipswich_town.png"
+        },
+        {
+          "value": "iroh",
+          "label": "Iroh",
+          "emoji": "🌀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/iroh.png"
+        },
+        {
+          "value": "iron man",
+          "label": "Iron Man",
+          "emoji": "🦸",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/iron_man.png"
+        },
+        {
+          "value": "jack skellington",
+          "label": "Jack Skellington",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jack_skellington.png"
+        },
+        {
+          "value": "jack sparrow",
+          "label": "Jack Sparrow",
+          "emoji": "🏴‍☠️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jack_sparrow.png"
+        },
+        {
+          "value": "jacksonville jaguars",
+          "label": "Jacksonville Jaguars",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jacksonville_jaguars.png"
+        },
+        {
+          "value": "james bond",
+          "label": "James Bond",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/james_bond.png"
+        },
+        {
+          "value": "jane austen",
+          "label": "Jane Austen",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jane_austen.png"
+        },
+        {
+          "value": "jane goodall",
+          "label": "Jane Goodall",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jane_goodall.png"
+        },
+        {
+          "value": "jane hopper",
+          "label": "Jane Hopper",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jane_hopper.png"
+        },
+        {
+          "value": "jesse pinkman",
+          "label": "Jesse Pinkman",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jesse_pinkman.png"
+        },
+        {
+          "value": "jigglypuff",
+          "label": "Jigglypuff",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jigglypuff.png"
+        },
+        {
+          "value": "jim hopper",
+          "label": "Jim Hopper",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jim_hopper.png"
+        },
+        {
+          "value": "jimi hendrix",
+          "label": "Jimi Hendrix",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jimi_hendrix.png"
+        },
+        {
+          "value": "jojo's bizarre adventure",
+          "label": "JoJo's Bizarre Adventure",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jojos_bizarre_adventure.png"
+        },
+        {
+          "value": "johann sebastian bach",
+          "label": "Johann Sebastian Bach",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/johann_sebastian_bach.png"
+        },
+        {
+          "value": "john lennon",
+          "label": "John Lennon",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/john_lennon.png"
+        },
+        {
+          "value": "john marston",
+          "label": "John Marston",
+          "emoji": "🪐",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/john_marston.png"
+        },
+        {
+          "value": "jon snow",
+          "label": "Jon Snow",
+          "emoji": "🎄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/jon_snow.png"
+        },
+        {
+          "value": "july 4th",
+          "label": "July 4th",
+          "emoji": "🎇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/july_4th.png"
+        },
+        {
+          "value": "kpop demon hunters",
+          "label": "KPop Demon Hunters",
+          "emoji": "🎃",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kpop_demon_hunters.png"
+        },
+        {
+          "value": "kagamine len",
+          "label": "Kagamine Len",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kagamine_len.png"
+        },
+        {
+          "value": "kagamine rin",
+          "label": "Kagamine Rin",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kagamine_rin.png"
+        },
+        {
+          "value": "kaito",
+          "label": "Kaito",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kaito.png"
+        },
+        {
+          "value": "kansas city chiefs",
+          "label": "Kansas City Chiefs",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kansas_city_chiefs.png"
+        },
+        {
+          "value": "kansas city royals",
+          "label": "Kansas City Royals",
+          "emoji": "👑",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kansas_city_royals.png"
+        },
+        {
+          "value": "kasane teto",
+          "label": "Kasane Teto",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kasane_teto.png"
+        },
+        {
+          "value": "katara",
+          "label": "Katara",
+          "emoji": "🌀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/katara.png"
+        },
+        {
+          "value": "katherine johnson",
+          "label": "Katherine Johnson",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/katherine_johnson.png"
+        },
+        {
+          "value": "katniss everdeen",
+          "label": "Katniss Everdeen",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/katniss_everdeen.png"
+        },
+        {
+          "value": "kazuma kiryu",
+          "label": "Kazuma Kiryu",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kazuma_kiryu.png"
+        },
+        {
+          "value": "keith haring",
+          "label": "Keith Haring",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/keith_haring.png"
+        },
+        {
+          "value": "kenny mccormick",
+          "label": "Kenny Mccormick",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kenny_mccormick.png"
+        },
+        {
+          "value": "kiki takayama",
+          "label": "Kiki Takayama",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kiki_takayama.png"
+        },
+        {
+          "value": "king arthur",
+          "label": "King Arthur",
+          "emoji": "🛡️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/king_arthur.png"
+        },
+        {
+          "value": "kirby",
+          "label": "Kirby",
+          "emoji": "⭐",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kirby.png"
+        },
+        {
+          "value": "kizuna ai",
+          "label": "Kizuna AI",
+          "emoji": "🤖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kizuna_ai.png"
+        },
+        {
+          "value": "klimt",
+          "label": "Klimt",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/klimt.png"
+        },
+        {
+          "value": "kobo kanaeru",
+          "label": "Kobo Kanaeru",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kobo_kanaeru.png"
+        },
+        {
+          "value": "koito yuu",
+          "label": "Koito Yuu",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/koito_yuu.png"
+        },
+        {
+          "value": "komi",
+          "label": "Komi",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/komi.png"
+        },
+        {
+          "value": "konata izumi",
+          "label": "Konata Izumi",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/konata_izumi.png"
+        },
+        {
+          "value": "konosuba",
+          "label": "Konosuba",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/konosuba.png"
+        },
+        {
+          "value": "kotlin",
+          "label": "Kotlin",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kotlin.png"
+        },
+        {
+          "value": "krang",
+          "label": "Krang",
+          "emoji": "🤖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/krang.png"
+        },
+        {
+          "value": "kyojuro rengoku",
+          "label": "Kyojuro Rengoku",
+          "emoji": "🐉",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kyojuro_rengoku.png"
+        },
+        {
+          "value": "la clippers",
+          "label": "LA Clippers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/la_clippers.png"
+        },
+        {
+          "value": "la galaxy",
+          "label": "LA Galaxy",
+          "emoji": "🚀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/la_galaxy.png"
+        },
+        {
+          "value": "labubu",
+          "label": "Labubu",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/labubu.png"
+        },
+        {
+          "value": "lara croft",
+          "label": "Lara Croft",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/lara_croft.png"
+        },
+        {
+          "value": "las vegas raiders",
+          "label": "Las Vegas Raiders",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/las_vegas_raiders.png"
+        },
+        {
+          "value": "leatherface",
+          "label": "Leatherface",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/leatherface.png"
+        },
+        {
+          "value": "lego",
+          "label": "Lego",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/lego.png"
+        },
+        {
+          "value": "leicester city",
+          "label": "Leicester City",
+          "emoji": "❄️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/leicester_city.png"
+        },
+        {
+          "value": "leonardo",
+          "label": "Leonardo",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/leonardo.png"
+        },
+        {
+          "value": "leonardo da vinci",
+          "label": "Leonardo da Vinci",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/leonardo_da_vinci.png"
+        },
+        {
+          "value": "lichess",
+          "label": "Lichess",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/lichess.png"
+        },
+        {
+          "value": "link",
+          "label": "Link",
+          "emoji": "🗡️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/link.png"
+        },
+        {
+          "value": "linux",
+          "label": "Linux",
+          "emoji": "🐧",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/linux.png"
+        },
+        {
+          "value": "little red riding hood",
+          "label": "Little Red Riding Hood",
+          "emoji": "🐺",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/little_red_riding_hood.png"
+        },
+        {
+          "value": "liverpool",
+          "label": "Liverpool",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/liverpool.png"
+        },
+        {
+          "value": "long john silver",
+          "label": "Long John Silver",
+          "emoji": "🏴‍☠️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/long_john_silver.png"
+        },
+        {
+          "value": "lord farquaad",
+          "label": "Lord Farquaad",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/lord_farquaad.png"
+        },
+        {
+          "value": "lord voldemort",
+          "label": "Lord Voldemort",
+          "emoji": "✨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/lord_voldemort.png"
+        },
+        {
+          "value": "los angeles angels",
+          "label": "Los Angeles Angels",
+          "emoji": "😇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/los_angeles_angels.png"
+        },
+        {
+          "value": "los angeles chargers",
+          "label": "Los Angeles Chargers",
+          "emoji": "😇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/los_angeles_chargers.png"
+        },
+        {
+          "value": "los angeles dodgers",
+          "label": "Los Angeles Dodgers",
+          "emoji": "😇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/los_angeles_dodgers.png"
+        },
+        {
+          "value": "los angeles football club",
+          "label": "Los Angeles Football Club",
+          "emoji": "⚽",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/los_angeles_football_club.png"
+        },
+        {
+          "value": "los angeles kings",
+          "label": "Los Angeles Kings",
+          "emoji": "👑",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/los_angeles_kings.png"
+        },
+        {
+          "value": "los angeles lakers",
+          "label": "Los Angeles Lakers",
+          "emoji": "😇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/los_angeles_lakers.png"
+        },
+        {
+          "value": "los angeles rams",
+          "label": "Los Angeles Rams",
+          "emoji": "😇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/los_angeles_rams.png"
+        },
+        {
+          "value": "louis armstrong",
+          "label": "Louis Armstrong",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/louis_armstrong.png"
+        },
+        {
+          "value": "lucario",
+          "label": "Lucario",
+          "emoji": "🏎️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/lucario.png"
+        },
+        {
+          "value": "lucille ball",
+          "label": "Lucille Ball",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/lucille_ball.png"
+        },
+        {
+          "value": "luffy",
+          "label": "Luffy",
+          "emoji": "🏴‍☠️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/luffy.png"
+        },
+        {
+          "value": "luigi",
+          "label": "Luigi",
+          "emoji": "🍄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/luigi.png"
+        },
+        {
+          "value": "luke skywalker",
+          "label": "Luke Skywalker",
+          "emoji": "⭐",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/luke_skywalker.png"
+        },
+        {
+          "value": "meiko",
+          "label": "MEIKO",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/meiko.png"
+        },
+        {
+          "value": "macbeth",
+          "label": "Macbeth",
+          "emoji": "👑",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/macbeth.png"
+        },
+        {
+          "value": "maleficent",
+          "label": "Maleficent",
+          "emoji": "🧚",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/maleficent.png"
+        },
+        {
+          "value": "mallard",
+          "label": "Mallard",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mallard.png"
+        },
+        {
+          "value": "manchester city",
+          "label": "Manchester City",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/manchester_city.png"
+        },
+        {
+          "value": "manchester united",
+          "label": "Manchester United",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/manchester_united.png"
+        },
+        {
+          "value": "mandarin duck",
+          "label": "Mandarin Duck",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mandarin_duck.png"
+        },
+        {
+          "value": "manosaba",
+          "label": "Manosaba",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/manosaba.png"
+        },
+        {
+          "value": "maria callas",
+          "label": "Maria Callas",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/maria_callas.png"
+        },
+        {
+          "value": "marie curie",
+          "label": "Marie Curie",
+          "emoji": "🔬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/marie_curie.png"
+        },
+        {
+          "value": "mario",
+          "label": "Mario",
+          "emoji": "🎮",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mario.png"
+        },
+        {
+          "value": "mars attacks",
+          "label": "Mars Attacks",
+          "emoji": "🪐",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mars_attacks.png"
+        },
+        {
+          "value": "marshmallow man",
+          "label": "Marshmallow Man",
+          "emoji": "🪐",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/marshmallow_man.png"
+        },
+        {
+          "value": "martok",
+          "label": "Martok",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/martok.png"
+        },
+        {
+          "value": "marty mcfly",
+          "label": "Marty McFly",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/marty_mcfly.png"
+        },
+        {
+          "value": "mary poppins",
+          "label": "Mary Poppins",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mary_poppins.png"
+        },
+        {
+          "value": "marzipan",
+          "label": "Marzipan",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/marzipan.png"
+        },
+        {
+          "value": "master chief",
+          "label": "Master Chief",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/master_chief.png"
+        },
+        {
+          "value": "maya angelou",
+          "label": "Maya Angelou",
+          "emoji": "😇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/maya_angelou.png"
+        },
+        {
+          "value": "medusa",
+          "label": "Medusa",
+          "emoji": "👾",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/medusa.png"
+        },
+        {
+          "value": "meg griffin",
+          "label": "Meg Griffin",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/meg_griffin.png"
+        },
+        {
+          "value": "mega man",
+          "label": "Mega Man",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mega_man.png"
+        },
+        {
+          "value": "megamind",
+          "label": "Megamind",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/megamind.png"
+        },
+        {
+          "value": "megatron",
+          "label": "Megatron",
+          "emoji": "🤖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/megatron.png"
+        },
+        {
+          "value": "megumi fushiguro",
+          "label": "Megumi Fushiguro",
+          "emoji": "👁️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/megumi_fushiguro.png"
+        },
+        {
+          "value": "megurine luka",
+          "label": "Megurine Luka",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/megurine_luka.png"
+        },
+        {
+          "value": "memphis grizzlies",
+          "label": "Memphis Grizzlies",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/memphis_grizzlies.png"
+        },
+        {
+          "value": "merida",
+          "label": "Merida",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/merida.png"
+        },
+        {
+          "value": "merlin",
+          "label": "Merlin",
+          "emoji": "🧙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/merlin.png"
+        },
+        {
+          "value": "metroid",
+          "label": "Metroid",
+          "emoji": "🚂",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/metroid.png"
+        },
+        {
+          "value": "mewtwo",
+          "label": "Mewtwo",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mewtwo.png"
+        },
+        {
+          "value": "miami dolphins",
+          "label": "Miami Dolphins",
+          "emoji": "🐙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/miami_dolphins.png"
+        },
+        {
+          "value": "miami heat",
+          "label": "Miami Heat",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/miami_heat.png"
+        },
+        {
+          "value": "michael myers",
+          "label": "Michael Myers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/michael_myers.png"
+        },
+        {
+          "value": "michelangelo",
+          "label": "Michelangelo",
+          "emoji": "😇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/michelangelo.png"
+        },
+        {
+          "value": "mike wazowski",
+          "label": "Mike Wazowski",
+          "emoji": "👾",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mike_wazowski.png"
+        },
+        {
+          "value": "mike wheeler",
+          "label": "Mike Wheeler",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mike_wheeler.png"
+        },
+        {
+          "value": "miles davis",
+          "label": "Miles Davis",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/miles_davis.png"
+        },
+        {
+          "value": "miles prower",
+          "label": "Miles Prower",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/miles_prower.png"
+        },
+        {
+          "value": "milwaukee brewers",
+          "label": "Milwaukee Brewers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/milwaukee_brewers.png"
+        },
+        {
+          "value": "milwaukee bucks",
+          "label": "Milwaukee Bucks",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/milwaukee_bucks.png"
+        },
+        {
+          "value": "minecraft",
+          "label": "Minecraft",
+          "emoji": "🎮",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/minecraft.png"
+        },
+        {
+          "value": "minions",
+          "label": "Minions",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/minions.png"
+        },
+        {
+          "value": "minnesota timberwolves",
+          "label": "Minnesota Timberwolves",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/minnesota_timberwolves.png"
+        },
+        {
+          "value": "minnesota twins",
+          "label": "Minnesota Twins",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/minnesota_twins.png"
+        },
+        {
+          "value": "minnesota united fc",
+          "label": "Minnesota United FC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/minnesota_united_fc.png"
+        },
+        {
+          "value": "minnesota vikings",
+          "label": "Minnesota Vikings",
+          "emoji": "👑",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/minnesota_vikings.png"
+        },
+        {
+          "value": "minnesota wild",
+          "label": "Minnesota Wild",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/minnesota_wild.png"
+        },
+        {
+          "value": "mira",
+          "label": "Mira",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mira.png"
+        },
+        {
+          "value": "miss piggy",
+          "label": "Miss Piggy",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/miss_piggy.png"
+        },
+        {
+          "value": "moby dick",
+          "label": "Moby Dick",
+          "emoji": "🐳",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/moby_dick.png"
+        },
+        {
+          "value": "modernism",
+          "label": "Modernism",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/modernism.png"
+        },
+        {
+          "value": "mojo jojo",
+          "label": "Mojo Jojo",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mojo_jojo.png"
+        },
+        {
+          "value": "mona lisa",
+          "label": "Mona Lisa",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mona_lisa.png"
+        },
+        {
+          "value": "monika",
+          "label": "Monika",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/monika.png"
+        },
+        {
+          "value": "montreal canadiens",
+          "label": "Montreal Canadiens",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/montreal_canadiens.png"
+        },
+        {
+          "value": "moogle",
+          "label": "Moogle",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/moogle.png"
+        },
+        {
+          "value": "mooninites",
+          "label": "Mooninites",
+          "emoji": "🌙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mooninites.png"
+        },
+        {
+          "value": "morpheus",
+          "label": "Morpheus",
+          "emoji": "💊",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/morpheus.png"
+        },
+        {
+          "value": "mouse",
+          "label": "Mouse",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mouse.png"
+        },
+        {
+          "value": "mozart",
+          "label": "Mozart",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mozart.png"
+        },
+        {
+          "value": "mr blobby",
+          "label": "Mr Blobby",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mr_blobby.png"
+        },
+        {
+          "value": "mr. darcy",
+          "label": "Mr. Darcy",
+          "emoji": "🌈",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mr_darcy.png"
+        },
+        {
+          "value": "mr. fantastic",
+          "label": "Mr. Fantastic",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mr_fantastic.png"
+        },
+        {
+          "value": "mr. hyde",
+          "label": "Mr. Hyde",
+          "emoji": "👾",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mr_hyde.png"
+        },
+        {
+          "value": "mulan",
+          "label": "Mulan",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mulan.png"
+        },
+        {
+          "value": "mummy",
+          "label": "Mummy",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mummy.png"
+        },
+        {
+          "value": "my melody",
+          "label": "My Melody",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/my_melody.png"
+        },
+        {
+          "value": "nami",
+          "label": "Nami",
+          "emoji": "🏴‍☠️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/nami.png"
+        },
+        {
+          "value": "nanami touko",
+          "label": "Nanami Touko",
+          "emoji": "🏴‍☠️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/nanami_touko.png"
+        },
+        {
+          "value": "napoleon",
+          "label": "Napoleon",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/napoleon.png"
+        },
+        {
+          "value": "naruto",
+          "label": "Naruto",
+          "emoji": "🎌",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/naruto.png"
+        },
+        {
+          "value": "nashville predators",
+          "label": "Nashville Predators",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/nashville_predators.png"
+        },
+        {
+          "value": "nashville sc",
+          "label": "Nashville SC",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/nashville_sc.png"
+        },
+        {
+          "value": "natsuki",
+          "label": "Natsuki",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/natsuki.png"
+        },
+        {
+          "value": "neil young",
+          "label": "Neil Young",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/neil_young.png"
+        },
+        {
+          "value": "neo",
+          "label": "Neo",
+          "emoji": "💊",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/neo.png"
+        },
+        {
+          "value": "new england patriots",
+          "label": "New England Patriots",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_england_patriots.png"
+        },
+        {
+          "value": "new england revolution",
+          "label": "New England Revolution",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_england_revolution.png"
+        },
+        {
+          "value": "new orleans pelicans",
+          "label": "New Orleans Pelicans",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_orleans_pelicans.png"
+        },
+        {
+          "value": "new orleans saints",
+          "label": "New Orleans Saints",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_orleans_saints.png"
+        },
+        {
+          "value": "new york city fc",
+          "label": "New York City FC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_york_city_fc.png"
+        },
+        {
+          "value": "new york giants",
+          "label": "New York Giants",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_york_giants.png"
+        },
+        {
+          "value": "new york islanders",
+          "label": "New York Islanders",
+          "emoji": "🌊",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_york_islanders.png"
+        },
+        {
+          "value": "new york jets",
+          "label": "New York Jets",
+          "emoji": "✈️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_york_jets.png"
+        },
+        {
+          "value": "new york knicks",
+          "label": "New York Knicks",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_york_knicks.png"
+        },
+        {
+          "value": "new york mets",
+          "label": "New York Mets",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_york_mets.png"
+        },
+        {
+          "value": "new york rangers",
+          "label": "New York Rangers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_york_rangers.png"
+        },
+        {
+          "value": "new york red bulls",
+          "label": "New York Red Bulls",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_york_red_bulls.png"
+        },
+        {
+          "value": "new york yankees",
+          "label": "New York Yankees",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_york_yankees.png"
+        },
+        {
+          "value": "new jersey devils",
+          "label": "New jersey devils",
+          "emoji": "😈",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/new_jersey_devils.png"
+        },
+        {
+          "value": "newcastle united",
+          "label": "Newcastle United",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/newcastle_united.png"
+        },
+        {
+          "value": "nezuko kamado",
+          "label": "Nezuko Kamado",
+          "emoji": "🌀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/nezuko_kamado.png"
+        },
+        {
+          "value": "nikola tesla",
+          "label": "Nikola Tesla",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/nikola_tesla.png"
+        },
+        {
+          "value": "ninja",
+          "label": "Ninja",
+          "emoji": "🥷",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ninja.png"
+        },
+        {
+          "value": "no-face",
+          "label": "No-Face",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/no-face.png"
+        },
+        {
+          "value": "nobara kugisaki",
+          "label": "Nobara Kugisaki",
+          "emoji": "👁️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/nobara_kugisaki.png"
+        },
+        {
+          "value": "nottingham forest",
+          "label": "Nottingham Forest",
+          "emoji": "🌳",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/nottingham_forest.png"
+        },
+        {
+          "value": "nutcracker",
+          "label": "Nutcracker",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/nutcracker.png"
+        },
+        {
+          "value": "nyan cat",
+          "label": "Nyan Cat",
+          "emoji": "🐱",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/nyan_cat.png"
+        },
+        {
+          "value": "oakland athletics",
+          "label": "Oakland Athletics",
+          "emoji": "🌳",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/oakland_athletics.png"
+        },
+        {
+          "value": "obelix",
+          "label": "Obelix",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/obelix.png"
+        },
+        {
+          "value": "odysseus",
+          "label": "Odysseus",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/odysseus.png"
+        },
+        {
+          "value": "okabe rintarou",
+          "label": "Okabe Rintarou",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/okabe_rintarou.png"
+        },
+        {
+          "value": "oklahoma city thunder",
+          "label": "Oklahoma City Thunder",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/oklahoma_city_thunder.png"
+        },
+        {
+          "value": "oktoberfest",
+          "label": "Oktoberfest",
+          "emoji": "🍺",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/oktoberfest.png"
+        },
+        {
+          "value": "olaf",
+          "label": "Olaf",
+          "emoji": "⛄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/olaf.png"
+        },
+        {
+          "value": "olympics",
+          "label": "Olympics",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/olympics.png"
+        },
+        {
+          "value": "oozora subaru",
+          "label": "Oozora Subaru",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/oozora_subaru.png"
+        },
+        {
+          "value": "openbsd",
+          "label": "OpenBSD",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/openbsd.png"
+        },
+        {
+          "value": "optimus prime",
+          "label": "Optimus Prime",
+          "emoji": "🤖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/optimus_prime.png"
+        },
+        {
+          "value": "orlando city sc",
+          "label": "Orlando City SC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/orlando_city_sc.png"
+        },
+        {
+          "value": "orlando magic",
+          "label": "Orlando magic",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/orlando_magic.png"
+        },
+        {
+          "value": "ororo munroe",
+          "label": "Ororo Munroe",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ororo_munroe.png"
+        },
+        {
+          "value": "osasuna",
+          "label": "Osasuna",
+          "emoji": "☀️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/osasuna.png"
+        },
+        {
+          "value": "ottawa senators",
+          "label": "Ottawa Senators",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ottawa_senators.png"
+        },
+        {
+          "value": "pacman",
+          "label": "Pacman",
+          "emoji": "👾",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pacman.png"
+        },
+        {
+          "value": "paddington bear",
+          "label": "Paddington Bear",
+          "emoji": "🐻",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/paddington_bear.png"
+        },
+        {
+          "value": "paimon",
+          "label": "Paimon",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/paimon.png"
+        },
+        {
+          "value": "pegasus",
+          "label": "Pegasus",
+          "emoji": "🦄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pegasus.png"
+        },
+        {
+          "value": "pennywise",
+          "label": "Pennywise",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pennywise.png"
+        },
+        {
+          "value": "peppa  pig",
+          "label": "Peppa  Pig",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/peppa_pig.png"
+        },
+        {
+          "value": "peter pan",
+          "label": "Peter Pan",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/peter_pan.png"
+        },
+        {
+          "value": "pez",
+          "label": "Pez",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pez.png"
+        },
+        {
+          "value": "phantom of the opera",
+          "label": "Phantom of the Opera",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/phantom_of_the_opera.png"
+        },
+        {
+          "value": "philadelphia 76ers",
+          "label": "Philadelphia 76ers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/philadelphia_76ers.png"
+        },
+        {
+          "value": "philadelphia eagles",
+          "label": "Philadelphia Eagles",
+          "emoji": "🦅",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/philadelphia_eagles.png"
+        },
+        {
+          "value": "philadelphia flyers",
+          "label": "Philadelphia Flyers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/philadelphia_flyers.png"
+        },
+        {
+          "value": "philadelphia phillies",
+          "label": "Philadelphia Phillies",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/philadelphia_phillies.png"
+        },
+        {
+          "value": "philadelphia union",
+          "label": "Philadelphia Union",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/philadelphia_union.png"
+        },
+        {
+          "value": "philip j fry",
+          "label": "Philip J Fry",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/philip_j_fry.png"
+        },
+        {
+          "value": "phoenix",
+          "label": "Phoenix",
+          "emoji": "🔥",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/phoenix.png"
+        },
+        {
+          "value": "phoenix suns",
+          "label": "Phoenix Suns",
+          "emoji": "🦅",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/phoenix_suns.png"
+        },
+        {
+          "value": "picasso",
+          "label": "Picasso",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/picasso.png"
+        },
+        {
+          "value": "pickle rick",
+          "label": "Pickle Rick",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pickle_rick.png"
+        },
+        {
+          "value": "piet mondrian",
+          "label": "Piet Mondrian",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/piet_mondrian.png"
+        },
+        {
+          "value": "pikachu",
+          "label": "Pikachu",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pikachu.png"
+        },
+        {
+          "value": "pikmin",
+          "label": "Pikmin",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pikmin.png"
+        },
+        {
+          "value": "pinkie pie",
+          "label": "Pinkie Pie",
+          "emoji": "🦄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pinkie_pie.png"
+        },
+        {
+          "value": "pinocchio",
+          "label": "Pinocchio",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pinocchio.png"
+        },
+        {
+          "value": "pirate",
+          "label": "Pirate",
+          "emoji": "🥇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pirate.png"
+        },
+        {
+          "value": "pittsburgh penguins",
+          "label": "Pittsburgh Penguins",
+          "emoji": "🐧",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pittsburgh_penguins.png"
+        },
+        {
+          "value": "pittsburgh pirates",
+          "label": "Pittsburgh Pirates",
+          "emoji": "🏴‍☠️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pittsburgh_pirates.png"
+        },
+        {
+          "value": "pittsburgh steelers",
+          "label": "Pittsburgh Steelers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pittsburgh_steelers.png"
+        },
+        {
+          "value": "pochacco",
+          "label": "Pochacco",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pochacco.png"
+        },
+        {
+          "value": "podman",
+          "label": "Podman",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/podman.png"
+        },
+        {
+          "value": "pokey",
+          "label": "Pokey",
+          "emoji": "🔑",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pokey.png"
+        },
+        {
+          "value": "pomni",
+          "label": "Pomni",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pomni.png"
+        },
+        {
+          "value": "pop art",
+          "label": "Pop art",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pop_art.png"
+        },
+        {
+          "value": "popeye",
+          "label": "Popeye",
+          "emoji": "🌙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/popeye.png"
+        },
+        {
+          "value": "portland timbers",
+          "label": "Portland Timbers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/portland_timbers.png"
+        },
+        {
+          "value": "portland trail blazers",
+          "label": "Portland Trail Blazers",
+          "emoji": "🚂",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/portland_trail_blazers.png"
+        },
+        {
+          "value": "powerpuff girls",
+          "label": "Powerpuff Girls",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/powerpuff_girls.png"
+        },
+        {
+          "value": "predator",
+          "label": "Predator",
+          "emoji": "👽",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/predator.png"
+        },
+        {
+          "value": "princess donut",
+          "label": "Princess Donut",
+          "emoji": "🍩",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/princess_donut.png"
+        },
+        {
+          "value": "princess leia",
+          "label": "Princess Leia",
+          "emoji": "👑",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/princess_leia.png"
+        },
+        {
+          "value": "princess mononoke",
+          "label": "Princess Mononoke",
+          "emoji": "👑",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/princess_mononoke.png"
+        },
+        {
+          "value": "princess peach",
+          "label": "Princess Peach",
+          "emoji": "👑",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/princess_peach.png"
+        },
+        {
+          "value": "protoss",
+          "label": "Protoss",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/protoss.png"
+        },
+        {
+          "value": "pug",
+          "label": "Pug",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pug.png"
+        },
+        {
+          "value": "puss in boots",
+          "label": "Puss in Boots",
+          "emoji": "🐱",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/puss_in_boots.png"
+        },
+        {
+          "value": "r2-d2",
+          "label": "R2-D2",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/r2d2.png"
+        },
+        {
+          "value": "rcd mallorca",
+          "label": "RCD Mallorca",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/mallorca.png"
+        },
+        {
+          "value": "rabbit",
+          "label": "Rabbit",
+          "emoji": "🐰",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rabbit.png"
+        },
+        {
+          "value": "rainbow dash",
+          "label": "Rainbow Dash",
+          "emoji": "🌈",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rainbow_dash.png"
+        },
+        {
+          "value": "ralsei",
+          "label": "Ralsei",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ralsei.png"
+        },
+        {
+          "value": "raphael",
+          "label": "Raphael",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/raphael.png"
+        },
+        {
+          "value": "rapunzel",
+          "label": "Rapunzel",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rapunzel.png"
+        },
+        {
+          "value": "rarity",
+          "label": "Rarity",
+          "emoji": "🦄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rarity.png"
+        },
+        {
+          "value": "rayo vallecano",
+          "label": "Rayo Vallecano",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rayo_vallecano.png"
+        },
+        {
+          "value": "real betis",
+          "label": "Real Betis",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/betis.png"
+        },
+        {
+          "value": "real madrid",
+          "label": "Real Madrid",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/real_madrid.png"
+        },
+        {
+          "value": "real salt lake",
+          "label": "Real Salt Lake",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/real_salt_lake.png"
+        },
+        {
+          "value": "real sociedad",
+          "label": "Real Sociedad",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/real_sociedad.png"
+        },
+        {
+          "value": "red xiii",
+          "label": "Red XIII",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/red_xiii.png"
+        },
+        {
+          "value": "reddit",
+          "label": "Reddit",
+          "emoji": "👽",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/reddit.png"
+        },
+        {
+          "value": "reimu hakurei",
+          "label": "Reimu Hakurei",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/reimu_hakurei.png"
+        },
+        {
+          "value": "rick sanchez",
+          "label": "Rick Sanchez",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rick_sanchez.png"
+        },
+        {
+          "value": "riddler",
+          "label": "Riddler",
+          "emoji": "🦇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/riddler.png"
+        },
+        {
+          "value": "rika furude",
+          "label": "Rika Furude",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rika_furude.png"
+        },
+        {
+          "value": "rin tohsaka",
+          "label": "Rin Tohsaka",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rin_tohsaka.png"
+        },
+        {
+          "value": "robin hood",
+          "label": "Robin Hood",
+          "emoji": "🏴‍☠️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/robin_hood.png"
+        },
+        {
+          "value": "roblox",
+          "label": "Roblox",
+          "emoji": "🎮",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/roblox.png"
+        },
+        {
+          "value": "robocop",
+          "label": "Robocop",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/robocop.png"
+        },
+        {
+          "value": "rocket raccoon",
+          "label": "Rocket Raccoon",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rocket_raccoon.png"
+        },
+        {
+          "value": "ron weasley",
+          "label": "Ron Weasley",
+          "emoji": "✨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ron_weasley.png"
+        },
+        {
+          "value": "rosa parks",
+          "label": "Rosa Parks",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rosa_parks.png"
+        },
+        {
+          "value": "rosalina",
+          "label": "Rosalina",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rosalina.png"
+        },
+        {
+          "value": "rosalind franklin",
+          "label": "Rosalind Franklin",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/rosalind_franklin.png"
+        },
+        {
+          "value": "roy lichtenstein",
+          "label": "Roy Lichtenstein",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/roy_lichtenstein.png"
+        },
+        {
+          "value": "ruko yokune",
+          "label": "Ruko Yokune",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ruko_yokune.png"
+        },
+        {
+          "value": "ruth bader ginsburg",
+          "label": "Ruth Bader Ginsburg",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ruth_bader_ginsburg.png"
+        },
+        {
+          "value": "ryomen sukuna",
+          "label": "Ryomen Sukuna",
+          "emoji": "👁️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ryomen_sukuna.png"
+        },
+        {
+          "value": "sacramento kings",
+          "label": "Sacramento Kings",
+          "emoji": "🍣",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sacramento_kings.png"
+        },
+        {
+          "value": "sailor moon",
+          "label": "Sailor Moon",
+          "emoji": "🎌",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sailor_moon.png"
+        },
+        {
+          "value": "saja boys",
+          "label": "Saja Boys",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/saja_boys.png"
+        },
+        {
+          "value": "sakura kinomoto",
+          "label": "Sakura Kinomoto",
+          "emoji": "🥷",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sakura_kinomoto.png"
+        },
+        {
+          "value": "sally ride",
+          "label": "Sally Ride",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sally_ride.png"
+        },
+        {
+          "value": "salvador dalí",
+          "label": "Salvador Dalí",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/salvador_dali.png"
+        },
+        {
+          "value": "samurai",
+          "label": "Samurai",
+          "emoji": "⚔️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/samurai.png"
+        },
+        {
+          "value": "san antonio spurs",
+          "label": "San Antonio Spurs",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/san_antonio_spurs.png"
+        },
+        {
+          "value": "san diego fc",
+          "label": "San Diego FC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/san_diego_fc.png"
+        },
+        {
+          "value": "san diego padres",
+          "label": "San Diego Padres",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/san_diego_padres.png"
+        },
+        {
+          "value": "san francisco 49ers",
+          "label": "San Francisco 49ers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/san_francisco_49ers.png"
+        },
+        {
+          "value": "san francisco giants",
+          "label": "San Francisco Giants",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/san_francisco_giants.png"
+        },
+        {
+          "value": "san jose earthquakes",
+          "label": "San Jose Earthquakes",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/san_jose_earthquakes.png"
+        },
+        {
+          "value": "san jose sharks",
+          "label": "San Jose Sharks",
+          "emoji": "🐙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/san_jose_sharks.png"
+        },
+        {
+          "value": "santa claus",
+          "label": "Santa Claus",
+          "emoji": "🎄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/santa_claus.png"
+        },
+        {
+          "value": "satoru gojo",
+          "label": "Satoru Gojo",
+          "emoji": "👁️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/satoru_gojo.png"
+        },
+        {
+          "value": "sauron",
+          "label": "Sauron",
+          "emoji": "💍",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sauron.png"
+        },
+        {
+          "value": "sayori",
+          "label": "Sayori",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sayori.png"
+        },
+        {
+          "value": "scooby-doo",
+          "label": "Scooby-Doo",
+          "emoji": "🐶",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/scooby-doo.png"
+        },
+        {
+          "value": "scream",
+          "label": "Scream",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/scream.png"
+        },
+        {
+          "value": "scrooge mcduck",
+          "label": "Scrooge McDuck",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/scrooge_mcduck.png"
+        },
+        {
+          "value": "seattle kraken",
+          "label": "Seattle Kraken",
+          "emoji": "🌊",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/seattle_kraken.png"
+        },
+        {
+          "value": "seattle mariners",
+          "label": "Seattle Mariners",
+          "emoji": "🌊",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/seattle_mariners.png"
+        },
+        {
+          "value": "seattle seahawks",
+          "label": "Seattle Seahawks",
+          "emoji": "🦅",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/seattle_seahawks.png"
+        },
+        {
+          "value": "seattle sounders fc",
+          "label": "Seattle Sounders FC",
+          "emoji": "🌊",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/seattle_sounders_fc.png"
+        },
+        {
+          "value": "sephiroth",
+          "label": "Sephiroth",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sephiroth.png"
+        },
+        {
+          "value": "severus snape",
+          "label": "Severus Snape",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/severus_snape.png"
+        },
+        {
+          "value": "sevilla fc",
+          "label": "Sevilla FC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sevilla.png"
+        },
+        {
+          "value": "shadow the hedgehog",
+          "label": "Shadow the Hedgehog",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/shadow_the_hedgehog.png"
+        },
+        {
+          "value": "shanks",
+          "label": "Shanks",
+          "emoji": "🏴‍☠️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/shanks.png"
+        },
+        {
+          "value": "sherlock holmes",
+          "label": "Sherlock Holmes",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sherlock_holmes.png"
+        },
+        {
+          "value": "shoya ishida",
+          "label": "Shoya Ishida",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/shoya.png"
+        },
+        {
+          "value": "shredder",
+          "label": "Shredder",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/shredder.png"
+        },
+        {
+          "value": "shrek",
+          "label": "Shrek",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/shrek.png"
+        },
+        {
+          "value": "silver surfer",
+          "label": "Silver Surfer",
+          "emoji": "🏄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/silver_surfer.png"
+        },
+        {
+          "value": "skeletor",
+          "label": "Skeletor",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/skeletor.png"
+        },
+        {
+          "value": "skyrim",
+          "label": "Skyrim",
+          "emoji": "🎮",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/skyrim.png"
+        },
+        {
+          "value": "sleeping beauty",
+          "label": "Sleeping Beauty",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sleeping_beauty.png"
+        },
+        {
+          "value": "sleepy",
+          "label": "Sleepy",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sleepy.png"
+        },
+        {
+          "value": "smurf",
+          "label": "Smurf",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/smurf.png"
+        },
+        {
+          "value": "sneezy",
+          "label": "Sneezy",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sneezy.png"
+        },
+        {
+          "value": "snorlax",
+          "label": "Snorlax",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/snorlax.png"
+        },
+        {
+          "value": "snow white",
+          "label": "Snow white",
+          "emoji": "🎄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/snow_white.png"
+        },
+        {
+          "value": "snowman",
+          "label": "Snowman",
+          "emoji": "🎄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/snowman.png"
+        },
+        {
+          "value": "sokka",
+          "label": "Sokka",
+          "emoji": "🌀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sokka.png"
+        },
+        {
+          "value": "solid snake",
+          "label": "Solid Snake",
+          "emoji": "🐍",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/solid_snake.png"
+        },
+        {
+          "value": "sonic",
+          "label": "Sonic",
+          "emoji": "🦔",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sonic.png"
+        },
+        {
+          "value": "southampton",
+          "label": "Southampton",
+          "emoji": "🧭",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/southampton.png"
+        },
+        {
+          "value": "space marine",
+          "label": "Space Marine",
+          "emoji": "🚀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/space_marine.png"
+        },
+        {
+          "value": "spawn",
+          "label": "Spawn",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/spawn.png"
+        },
+        {
+          "value": "speed racer",
+          "label": "Speed Racer",
+          "emoji": "🏎️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/speed_racer.png"
+        },
+        {
+          "value": "spice girls",
+          "label": "Spice Girls",
+          "emoji": "❄️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/spice_girls.png"
+        },
+        {
+          "value": "spider-man",
+          "label": "Spider-Man",
+          "emoji": "🕷️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/spider-man.png"
+        },
+        {
+          "value": "spock",
+          "label": "Spock",
+          "emoji": "🚀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/spock.png"
+        },
+        {
+          "value": "spongebob",
+          "label": "Spongebob",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/spongebob.png"
+        },
+        {
+          "value": "sporting kansas city",
+          "label": "Sporting Kansas City",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sporting_kansas_city.png"
+        },
+        {
+          "value": "spy x family",
+          "label": "Spy x Family",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/spy_x_family.png"
+        },
+        {
+          "value": "squid game",
+          "label": "Squid Game",
+          "emoji": "🐙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/squid_game.png"
+        },
+        {
+          "value": "squirtle",
+          "label": "Squirtle",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/squirtle.png"
+        },
+        {
+          "value": "st louis blues",
+          "label": "St Louis Blues",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/st_louis_blues.png"
+        },
+        {
+          "value": "st louis cardinals",
+          "label": "St Louis Cardinals",
+          "emoji": "🏎️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/st_louis_cardinals.png"
+        },
+        {
+          "value": "st. louis city sc",
+          "label": "St. Louis CITY SC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/st_louis_city_sc.png"
+        },
+        {
+          "value": "st. patrick's day",
+          "label": "St. Patrick's Day",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/st_patricks_day.png"
+        },
+        {
+          "value": "stan marsh",
+          "label": "Stan Marsh",
+          "emoji": "🪐",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/stan_marsh.png"
+        },
+        {
+          "value": "star-lord",
+          "label": "Star-Lord",
+          "emoji": "⭐",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/star-lord.png"
+        },
+        {
+          "value": "stargate",
+          "label": "Stargate",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/stargate.png"
+        },
+        {
+          "value": "statue of liberty",
+          "label": "Statue of Liberty",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/statue_of_liberty.png"
+        },
+        {
+          "value": "steve jobs",
+          "label": "Steve Jobs",
+          "emoji": "🍎",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/steve_jobs.png"
+        },
+        {
+          "value": "stitch",
+          "label": "Stitch",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/stitch.png"
+        },
+        {
+          "value": "strong bad",
+          "label": "Strong Bad",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/strong_bad.png"
+        },
+        {
+          "value": "strong sad",
+          "label": "Strong Sad",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/strong_sad.png"
+        },
+        {
+          "value": "stuffed animal",
+          "label": "Stuffed Animal",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/stuffed_animal.png"
+        },
+        {
+          "value": "subzero",
+          "label": "Subzero",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/subzero.png"
+        },
+        {
+          "value": "sun wukong",
+          "label": "Sun Wukong",
+          "emoji": "☀️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/sun_wukong.png"
+        },
+        {
+          "value": "super bowl",
+          "label": "Super Bowl",
+          "emoji": "🦅",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/super_bowl.png"
+        },
+        {
+          "value": "superman",
+          "label": "Superman",
+          "emoji": "🦸",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/superman.png"
+        },
+        {
+          "value": "surgeon",
+          "label": "Surgeon",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/surgeon.png"
+        },
+        {
+          "value": "surrealism",
+          "label": "Surrealism",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/surrealism.png"
+        },
+        {
+          "value": "swimmer",
+          "label": "Swimmer",
+          "emoji": "⚽",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/swimmer.png"
+        },
+        {
+          "value": "t-rex",
+          "label": "T-Rex",
+          "emoji": "🦕",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/t-rex.png"
+        },
+        {
+          "value": "takopi's original sin",
+          "label": "Takopi's Original Sin",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/takopis_original_sin.png"
+        },
+        {
+          "value": "tampa bay buccaneers",
+          "label": "Tampa Bay Buccaneers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tampa_bay_buccaneers.png"
+        },
+        {
+          "value": "tampa bay lightning",
+          "label": "Tampa Bay Lightning",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tampa_bay_lightning.png"
+        },
+        {
+          "value": "tampa bay rays",
+          "label": "Tampa bay rays",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tampa_bay_rays.png"
+        },
+        {
+          "value": "tanjiro kamado",
+          "label": "Tanjiro Kamado",
+          "emoji": "🗡️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tanjiro_kamado.png"
+        },
+        {
+          "value": "tennessee titans",
+          "label": "Tennessee Titans",
+          "emoji": "⚔️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tennessee_titans.png"
+        },
+        {
+          "value": "terminator",
+          "label": "Terminator",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/terminator.png"
+        },
+        {
+          "value": "texas rangers",
+          "label": "Texas Rangers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/texas_rangers.png"
+        },
+        {
+          "value": "thanos",
+          "label": "Thanos",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/thanos.png"
+        },
+        {
+          "value": "the babadook",
+          "label": "The Babadook",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_babadook.png"
+        },
+        {
+          "value": "the bachelor",
+          "label": "The Bachelor",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_bachelor.png"
+        },
+        {
+          "value": "the bachelorette",
+          "label": "The Bachelorette",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_bachelorette.png"
+        },
+        {
+          "value": "the cat in the hat",
+          "label": "The Cat in the Hat",
+          "emoji": "🐱",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_cat_in_the_hat.png"
+        },
+        {
+          "value": "the cheat",
+          "label": "The Cheat",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_cheat.png"
+        },
+        {
+          "value": "the cheshire cat",
+          "label": "The Cheshire Cat",
+          "emoji": "🐱",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_cheshire_cat.png"
+        },
+        {
+          "value": "the dude",
+          "label": "The Dude",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_dude.png"
+        },
+        {
+          "value": "the flash",
+          "label": "The Flash",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_flash.png"
+        },
+        {
+          "value": "the fly",
+          "label": "The Fly",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_fly.png"
+        },
+        {
+          "value": "the grinch",
+          "label": "The Grinch",
+          "emoji": "🎄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_grinch.png"
+        },
+        {
+          "value": "the hulk",
+          "label": "The Hulk",
+          "emoji": "💚",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_hulk.png"
+        },
+        {
+          "value": "the invisible man",
+          "label": "The Invisible Man",
+          "emoji": "🔬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_invisible_man.png"
+        },
+        {
+          "value": "the iron giant",
+          "label": "The Iron Giant",
+          "emoji": "🤖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_iron_giant.png"
+        },
+        {
+          "value": "the joker",
+          "label": "The Joker",
+          "emoji": "🦇",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_joker.png"
+        },
+        {
+          "value": "the little mermaid",
+          "label": "The Little Mermaid",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_little_mermaid.png"
+        },
+        {
+          "value": "the mad hatter",
+          "label": "The Mad Hatter",
+          "emoji": "🍵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_mad_hatter.png"
+        },
+        {
+          "value": "the penguin",
+          "label": "The Penguin",
+          "emoji": "🐧",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_penguin.png"
+        },
+        {
+          "value": "the phantom",
+          "label": "The Phantom",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_phantom.png"
+        },
+        {
+          "value": "the pillsbury doughboy",
+          "label": "The Pillsbury Doughboy",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_pillsbury_doughboy.png"
+        },
+        {
+          "value": "the queen of hearts",
+          "label": "The Queen of Hearts",
+          "emoji": "💖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_queen_of_hearts.png"
+        },
+        {
+          "value": "the reverse flash",
+          "label": "The Reverse Flash",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_reverse_flash.png"
+        },
+        {
+          "value": "the ring",
+          "label": "The Ring",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_ring.png"
+        },
+        {
+          "value": "the scream",
+          "label": "The Scream",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_scream.png"
+        },
+        {
+          "value": "the snowman",
+          "label": "The Snowman",
+          "emoji": "🎄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_snowman.png"
+        },
+        {
+          "value": "the sphinx",
+          "label": "The Sphinx",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_sphinx.png"
+        },
+        {
+          "value": "the thing",
+          "label": "The Thing",
+          "emoji": "🎸",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_thing.png"
+        },
+        {
+          "value": "the tin man",
+          "label": "The Tin Man",
+          "emoji": "🧙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_tin_man.png"
+        },
+        {
+          "value": "the white rabbit",
+          "label": "The White Rabbit",
+          "emoji": "🐰",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/the_white_rabbit.png"
+        },
+        {
+          "value": "thor",
+          "label": "Thor",
+          "emoji": "⛈️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/thor.png"
+        },
+        {
+          "value": "tiana",
+          "label": "Tiana",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tiana.png"
+        },
+        {
+          "value": "tifa lockhart",
+          "label": "Tifa Lockhart",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tifa_lockhart.png"
+        },
+        {
+          "value": "tinker bell",
+          "label": "Tinker Bell",
+          "emoji": "🧚",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tinker_bell.png"
+        },
+        {
+          "value": "toge inumaki",
+          "label": "Toge Inumaki",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/toge_inumaki.png"
+        },
+        {
+          "value": "tom sawyer",
+          "label": "Tom Sawyer",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tom_sawyer.png"
+        },
+        {
+          "value": "tooth fairy",
+          "label": "Tooth Fairy",
+          "emoji": "🧚",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tooth_fairy.png"
+        },
+        {
+          "value": "toothless",
+          "label": "Toothless",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/toothless.png"
+        },
+        {
+          "value": "toph beifong",
+          "label": "Toph Beifong",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/toph_beifong.png"
+        },
+        {
+          "value": "toronto blue jays",
+          "label": "Toronto Blue Jays",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/toronto_blue_jays.png"
+        },
+        {
+          "value": "toronto fc",
+          "label": "Toronto FC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/toronto_fc.png"
+        },
+        {
+          "value": "toronto raptors",
+          "label": "Toronto Raptors",
+          "emoji": "🦕",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/toronto_raptors.png"
+        },
+        {
+          "value": "totoro",
+          "label": "Totoro",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/totoro.png"
+        },
+        {
+          "value": "tottenham hotspur",
+          "label": "Tottenham Hotspur",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tottenham_hotspur.png"
+        },
+        {
+          "value": "tour de france",
+          "label": "Tour de France",
+          "emoji": "⚽",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tour_de_france.png"
+        },
+        {
+          "value": "traitors",
+          "label": "Traitors",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/traitors.png"
+        },
+        {
+          "value": "trogdor",
+          "label": "Trogdor",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/trogdor.png"
+        },
+        {
+          "value": "tron",
+          "label": "Tron",
+          "emoji": "🎬",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/tron.png"
+        },
+        {
+          "value": "twilight sparkle",
+          "label": "Twilight Sparkle",
+          "emoji": "🦄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/twilight_sparkle.png"
+        },
+        {
+          "value": "ty lee",
+          "label": "Ty Lee",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ty_lee.png"
+        },
+        {
+          "value": "ud las palmas",
+          "label": "UD Las Palmas",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/las_palmas.png"
+        },
+        {
+          "value": "undertale",
+          "label": "UNDERTALE",
+          "emoji": "🍺",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/undertale.png"
+        },
+        {
+          "value": "ubuntu",
+          "label": "Ubuntu",
+          "emoji": "🐧",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ubuntu.png"
+        },
+        {
+          "value": "ultraman",
+          "label": "Ultraman",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ultraman.png"
+        },
+        {
+          "value": "unicorn",
+          "label": "Unicorn",
+          "emoji": "🐴",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/unicorn.png"
+        },
+        {
+          "value": "ursula k le guin",
+          "label": "Ursula K Le Guin",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ursula_k_le_guin.png"
+        },
+        {
+          "value": "utah hockey club",
+          "label": "Utah Hockey Club",
+          "emoji": "🏒",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/utah_hockey_club.png"
+        },
+        {
+          "value": "utah jazz",
+          "label": "Utah Jazz",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/utah_jazz.png"
+        },
+        {
+          "value": "v flower",
+          "label": "V Flower",
+          "emoji": "🌸",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/vflower.png"
+        },
+        {
+          "value": "valencia cf",
+          "label": "Valencia CF",
+          "emoji": "🍺",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/valencia.png"
+        },
+        {
+          "value": "valladolid cf",
+          "label": "Valladolid CF",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/valladolid.png"
+        },
+        {
+          "value": "valve",
+          "label": "Valve",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/valve.png"
+        },
+        {
+          "value": "van gogh",
+          "label": "Van Gogh",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/van_gogh.png"
+        },
+        {
+          "value": "vancouver canucks",
+          "label": "Vancouver Canucks",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/vancouver_canucks.png"
+        },
+        {
+          "value": "vancouver whitecaps fc",
+          "label": "Vancouver Whitecaps FC",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/vancouver_whitecaps_fc.png"
+        },
+        {
+          "value": "vault boy",
+          "label": "Vault Boy",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/vault_boy.png"
+        },
+        {
+          "value": "vecna",
+          "label": "Vecna",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/vecna.png"
+        },
+        {
+          "value": "vegas golden knights",
+          "label": "Vegas Golden Knights",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/vegas_golden_knights.png"
+        },
+        {
+          "value": "villarreal cf",
+          "label": "Villarreal CF",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/villarreal.png"
+        },
+        {
+          "value": "vincent valentine",
+          "label": "Vincent Valentine",
+          "emoji": "💖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/vincent_valentine.png"
+        },
+        {
+          "value": "vuelta a españa",
+          "label": "Vuelta a España",
+          "emoji": "⚽",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/vuelta_a_espana.png"
+        },
+        {
+          "value": "wall-e",
+          "label": "WALL-E",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/wall-e.png"
+        },
+        {
+          "value": "waldo",
+          "label": "Waldo",
+          "emoji": "📚",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/waldo.png"
+        },
+        {
+          "value": "wallace",
+          "label": "Wallace",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/wallace.png"
+        },
+        {
+          "value": "walter white",
+          "label": "Walter White",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/walter_white.png"
+        },
+        {
+          "value": "washington capitals",
+          "label": "Washington Capitals",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/washington_capitals.png"
+        },
+        {
+          "value": "washington commanders",
+          "label": "Washington Commanders",
+          "emoji": "🥊",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/washington_commanders.png"
+        },
+        {
+          "value": "washington nationals",
+          "label": "Washington Nationals",
+          "emoji": "⚡",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/washington_nationals.png"
+        },
+        {
+          "value": "washington wizards",
+          "label": "Washington Wizards",
+          "emoji": "🧙",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/washington_wizards.png"
+        },
+        {
+          "value": "watanare",
+          "label": "Watanare",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/watanare.png"
+        },
+        {
+          "value": "wednesday addams",
+          "label": "Wednesday Addams",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/wednesday_addams.png"
+        },
+        {
+          "value": "west ham united",
+          "label": "West Ham United",
+          "emoji": "🧭",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/west_ham_united.png"
+        },
+        {
+          "value": "wheatley",
+          "label": "Wheatley",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/wheatley.png"
+        },
+        {
+          "value": "where the wild things are",
+          "label": "Where the Wild Things Are",
+          "emoji": "📚",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/where_the_wild_things_are.png"
+        },
+        {
+          "value": "will byers",
+          "label": "Will Byers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/will_byers.png"
+        },
+        {
+          "value": "winnie the pooh",
+          "label": "Winnie The Pooh",
+          "emoji": "🐻",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/winnie_the_pooh.png"
+        },
+        {
+          "value": "winnipeg jets",
+          "label": "Winnipeg Jets",
+          "emoji": "✈️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/winnipeg_jets.png"
+        },
+        {
+          "value": "witch",
+          "label": "Witch",
+          "emoji": "✨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/witch.png"
+        },
+        {
+          "value": "wizard",
+          "label": "Wizard",
+          "emoji": "✨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/wizard.png"
+        },
+        {
+          "value": "wolverhampton wanderers",
+          "label": "Wolverhampton Wanderers",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/wolverhampton_wanderers.png"
+        },
+        {
+          "value": "wolverine",
+          "label": "Wolverine",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/wolverine.png"
+        },
+        {
+          "value": "wonder woman",
+          "label": "Wonder Woman",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/wonder_woman.png"
+        },
+        {
+          "value": "woody",
+          "label": "Woody",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/woody.png"
+        },
+        {
+          "value": "wordle",
+          "label": "Wordle",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/wordle.png"
+        },
+        {
+          "value": "yeti",
+          "label": "Yeti",
+          "emoji": "❄️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/yeti.png"
+        },
+        {
+          "value": "yoda",
+          "label": "Yoda",
+          "emoji": "⭐",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/yoda.png"
+        },
+        {
+          "value": "yoshi",
+          "label": "Yoshi",
+          "emoji": "🍄",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/yoshi.png"
+        },
+        {
+          "value": "yotsuba koiwai",
+          "label": "Yotsuba Koiwai",
+          "emoji": "🤖",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/yotsuba_koiwai.png"
+        },
+        {
+          "value": "yuffie kisaragi",
+          "label": "Yuffie Kisaragi",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/yuffie_kisaragi.png"
+        },
+        {
+          "value": "yugi mutou",
+          "label": "Yugi Mutou",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/yugi_mutou.png"
+        },
+        {
+          "value": "yuji itadori",
+          "label": "Yuji Itadori",
+          "emoji": "👁️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/yuji_itadori.png"
+        },
+        {
+          "value": "yuri",
+          "label": "Yuri",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/yuri.png"
+        },
+        {
+          "value": "zelda",
+          "label": "Zelda",
+          "emoji": "🎮",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/zelda.png"
+        },
+        {
+          "value": "zenitsu agatsuma",
+          "label": "Zenitsu Agatsuma",
+          "emoji": "🗡️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/zenitsu_agatsuma.png"
+        },
+        {
+          "value": "zerg",
+          "label": "Zerg",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/zerg.png"
+        },
+        {
+          "value": "zeus",
+          "label": "Zeus",
+          "emoji": "⛈️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/zeus.png"
+        },
+        {
+          "value": "ziggy stardust",
+          "label": "Ziggy Stardust",
+          "emoji": "🎵",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/ziggy_stardust.png"
+        },
+        {
+          "value": "zoey",
+          "label": "Zoey",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/zoe.png"
+        },
+        {
+          "value": "zombie",
+          "label": "Zombie",
+          "emoji": "🎃",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/zombie.png"
+        },
+        {
+          "value": "zorro",
+          "label": "Zorro",
+          "emoji": "⚔️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/zorro.png"
+        },
+        {
+          "value": "zuko",
+          "label": "Zuko",
+          "emoji": "🌀",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/zuko.png"
+        },
+        {
+          "value": "zundamon",
+          "label": "Zundamon",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/zundamon.png"
+        },
+        {
+          "value": "attack on titan",
+          "label": "attack on titan",
+          "emoji": "⚔️",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/attack_on_titan.png"
+        },
+        {
+          "value": "buffalo bill",
+          "label": "buffalo bill",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/buffalo_bill.png"
+        },
+        {
+          "value": "darth sidious",
+          "label": "darth sidious",
+          "emoji": "🎨",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/darth_sidious.png"
+        },
+        {
+          "value": "diego maradona",
+          "label": "diego maradona",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/diego_maradona.png"
+        },
+        {
+          "value": "duckling",
+          "label": "duckling",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/duckling.png"
+        },
+        {
+          "value": "goofy",
+          "label": "goofy",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/goofy.png"
+        },
+        {
+          "value": "kill bill",
+          "label": "kill bill",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kill_bill.png"
+        },
+        {
+          "value": "kratos",
+          "label": "kratos",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kratos.png"
+        },
+        {
+          "value": "kuromi",
+          "label": "kuromi",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/kuromi.png"
+        },
+        {
+          "value": "miami marlins",
+          "label": "miami marlins",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/miami_marlins.png"
+        },
+        {
+          "value": "pompompurin",
+          "label": "pompompurin",
+          "emoji": "🦆",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/pompompurin.png"
+        },
+        {
+          "value": "toronto maple leafs",
+          "label": "toronto maple leafs",
+          "emoji": "🌳",
+          "url": "https://duckduckgo.com/dist/logos/dynamic/toronto_maple_leafs.png"
+        }
+      ],
+      "default": "none",
+      "section": "Secret Logos",
+      "quick": true
+    },
+    {
+      "id": "randomSecretLogo",
+      "label": "Random logo each visit",
+      "type": "toggle",
+      "default": false,
+      "section": "Secret Logos"
+    },
+    {
+      "id": "customLogoUrl",
+      "label": "Custom logo image URL",
+      "type": "text",
+      "default": "",
+      "placeholder": "https://... or data:image/...",
+      "section": "Secret Logos"
+    },
+    {
+      "id": "logoScale",
+      "label": "Logo scale",
+      "type": "slider",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "unit": "%",
+      "default": 100,
+      "section": "Secret Logos"
+    },
+    {
+      "id": "syncNative",
+      "label": "Sync native settings (ad cookie)",
+      "type": "toggle",
+      "default": true,
+      "section": "Advanced"
+    }
+  ],
+  "styles": {
+    "css": "/* Prism DuckDuckGo module */\nhtml.prism-mod-duckduckgo { --prism-radius: calc(var(--prism-cornerRadius, 10px)); }\n\n/* ===== Theme modes (CSS-only presets) ===== */\nhtml.prism-themeMode-sepia { filter: sepia(0.45) saturate(1.1) brightness(0.96); }\nhtml.prism-themeMode-nord body { background-color: #2e3440 !important; color: #d8dee9 !important; }\nhtml.prism-themeMode-nord .result__a, html.prism-themeMode-nord .result__title a { color: #88c0d0 !important; }\nhtml.prism-themeMode-nord .result__url { color: #81a1c1 !important; }\nhtml.prism-themeMode-nord .header-wrap, html.prism-themeMode-nord header { background: #3b4252 !important; }\n\n/* ===== Custom colors ===== */\nhtml.prism-on-customColors body { background-color: var(--prism-bgColor) !important; color: var(--prism-textColor) !important; }\nhtml.prism-on-customColors .result__a, html.prism-on-customColors .result__title a, html.prism-on-customColors .result__a:link { color: var(--prism-linkColor) !important; }\nhtml.prism-on-customColors a:visited, html.prism-on-customColors .result__a:visited { color: var(--prism-visitedColor) !important; }\nhtml.prism-on-customColors .result__url, html.prism-on-customColors .result__extras, html.prism-on-customColors .result__snippet { color: var(--prism-urlColor) !important; }\nhtml.prism-on-customColors .header-wrap, html.prism-on-customColors header, html.prism-on-customColors .header--search { background: var(--prism-headerColor) !important; }\nhtml.prism-on-customColors .site-wrapper, html.prism-on-customColors .content-wrap { background: var(--prism-bgColor) !important; }\n\n/* ===== Typography ===== */\nhtml.prism-fontFamily-arial body { font-family: Arial, Helvetica, sans-serif !important; }\nhtml.prism-fontFamily-georgia body { font-family: Georgia, serif !important; }\nhtml.prism-fontFamily-verdana body { font-family: Verdana, Geneva, sans-serif !important; }\nhtml.prism-fontFamily-tahoma body { font-family: Tahoma, sans-serif !important; }\nhtml.prism-fontFamily-courier body { font-family: 'Courier New', monospace !important; }\nhtml.prism-fontFamily-system body { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif !important; }\nhtml.prism-mod-duckduckgo .result, html.prism-mod-duckduckgo .result__body { font-size: calc(var(--prism-customFontScale, 100) * 1%) !important; }\n\n/* ===== Layout ===== */\nhtml.prism-on-compactResults .result { padding: 8px 12px !important; margin: 2px 0 !important; }\nhtml.prism-on-compactResults .result__snippet { -webkit-line-clamp: 2 !important; }\nhtml.prism-on-hideAds .result--ad, html.prism-on-hideAds .result.result--ad, html.prism-on-hideAds [data-testid='ad'] { display: none !important; }\nhtml.prism-on-centerLogo .logo-wrap, html.prism-on-centerLogo .header__logo { display: flex !important; justify-content: center !important; margin: 0 auto !important; text-align: center !important; }\nhtml.prism-on-stickyHeaderOff .header-wrap, html.prism-on-stickyHeaderOff header { position: static !important; }\nhtml.prism-on-roundedCorners .result, html.prism-on-roundedCorners .search--adv, html.prism-on-roundedCorners .zci { border-radius: var(--prism-radius) !important; }\nhtml.prism-on-roundedCorners .badge-circle, html.prism-on-roundedCorners .search__input { border-radius: calc(var(--prism-radius) * 0.6) !important; }\n\n/* ===== Custom logo image ===== */\nhtml.prism-mod-duckduckgo .logo-wrap img.logo-img,\nhtml.prism-mod-duckduckgo .header__logo img,\nhtml.prism-mod-duckduckgo .logo-homepage { transform: scale(calc(var(--prism-logoScale, 100) / 100)); transform-origin: left center; }\n"
+  }
+}

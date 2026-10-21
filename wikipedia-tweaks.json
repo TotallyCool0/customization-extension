@@ -1,0 +1,20 @@
+{
+  "id": "wikipedia-tweaks",
+  "name": "Wikipedia Tweaks",
+  "version": "1.0.0",
+  "author": "TotallyCool0",
+  "description": "A demonstration data-driven module. Serif typography toggle, content width control, and a soft sepia reading mode. Ships as pure CSS+settings — no JavaScript — which is the format all community-contributed modules use.",
+  "emoji": "📚",
+  "accent": "#636466",
+  "matches": ["*://*.wikipedia.org/*", "*://*.wikimedia.org/*"],
+  "settings": [
+    { "id": "serifMode", "label": "Serif typography", "type": "toggle", "default": true, "section": "Reading" },
+    { "id": "contentWidth", "label": "Content width", "type": "slider", "min": 600, "max": 1400, "step": 50, "unit": "px", "default": 900, "section": "Reading" },
+    { "id": "sepiaMode", "label": "Sepia reading mode", "type": "toggle", "default": false, "section": "Reading" },
+    { "id": "hideDonate", "label": "Hide donation banners", "type": "toggle", "default": true, "section": "Cleanup" },
+    { "id": "hideSidebar", "label": "Hide left sidebar", "type": "toggle", "default": false, "section": "Cleanup" }
+  ],
+  "styles": {
+    "css": "html.prism-on-serifMode body, html.prism-on-serifMode .mw-body { font-family: Georgia, 'Source Serif Pro', serif !important; }\nhtml.prism-mod-wikipedia-tweaks .mw-page-container { max-width: var(--prism-contentWidth, 900px) !important; }\nhtml.prism-on-sepiaMode body { background: #f4ecd8 !important; filter: sepia(0.25); }\nhtml.prism-on-sepiaMode .vector-body { background: #fbf6e9 !important; }\nhtml.prism-on-hideDonate .frb, html.prism-on-hideDonate .banner-container, html.prism-on-hideDonate #siteNotice { display: none !important; }\nhtml.prism-on-hideSidebar .vector-sidebar, html.prism-on-hideSidebar #mw-panel { display: none !important; }\nhtml.prism-on-hideSidebar .mw-body { margin-left: 0 !important; }\n"
+  }
+}
